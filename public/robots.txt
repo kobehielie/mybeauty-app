@@ -1,0 +1,20 @@
+User-agent: *
+Allow: /
+Allow: /services
+Allow: /inscription
+Allow: /connexion
+Allow: /profil
+Allow: /localisation
+
+# Bloquer les pages privées et de debug
+Disallow: /debug
+Disallow: /dashboard-client
+Disallow: /dashboard-prestataire
+Disallow: /gestion-planning
+Disallow: /paiement
+
+# Sitemap
+Sitemap: https://mybeauty.ci/sitemap.xml
+
+# Crawl-delay pour éviter la surcharge
+Crawl-delay: 1

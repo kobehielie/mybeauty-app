@@ -1,0 +1,653 @@
+{
+  "utilisateurs": [
+    {
+      "id": 1,
+      "nom": "Dagou",
+      "prenom": "Abé",
+      "email": "dagou.abé@email.com",
+      "telephone": "0712345678",
+      "motDePasse": "password123",
+      "role": "client",
+      "image": null
+    },
+    {
+      "id": 2,
+      "nom": "Sephora",
+      "prenom": "Kouassi",
+      "email": "sephora.kouassi@email.com",
+      "telephone": "0687654321",
+      "motDePasse": "password456",
+      "role": "client",
+      "image": null
+    },
+    {
+      "id": 3,
+      "nom": "Kouadio",
+      "prenom": "Yan",
+      "email": "yan.kouadio@email.com",
+      "telephone": "0645123789",
+      "motDePasse": "password789",
+      "role": "client",
+      "image": null
+    },
+    {
+      "id": 10,
+      "nom": "Bamba",
+      "prenom": "Fatou",
+      "email": "fatou.bamba@email.com",
+      "telephone": "0756432198",
+      "motDePasse": "password101",
+      "role": "client",
+      "image": null
+    },
+    {
+      "id": 11,
+      "nom": "Traoré",
+      "prenom": "Ibrahim",
+      "email": "ibrahim.traore@email.com",
+      "telephone": "0798765432",
+      "motDePasse": "password102",
+      "role": "client",
+      "image": null
+    },
+    {
+      "id": 12,
+      "nom": "Yao",
+      "prenom": "Adjoua",
+      "email": "adjoua.yao@email.com",
+      "telephone": "0712398765",
+      "motDePasse": "password103",
+      "role": "client",
+      "image": null
+    },
+    {
+      "id": 13,
+      "nom": "Diallo",
+      "prenom": "Mamadou",
+      "email": "mamadou.diallo@email.com",
+      "telephone": "0745678901",
+      "motDePasse": "password104",
+      "role": "prestataire",
+      "image": null
+    },
+    {
+      "id": 14,
+      "nom": "Koné",
+      "prenom": "Mariam",
+      "email": "mariam.kone@email.com",
+      "telephone": "0787654321",
+      "motDePasse": "password105",
+      "role": "prestataire",
+      "image": null
+    },
+    {
+      "id": 15,
+      "nom": "Ouattara",
+      "prenom": "Seydou",
+      "email": "seydou.ouattara@email.com",
+      "telephone": "0756789012",
+      "motDePasse": "password106",
+      "role": "client",
+      "image": null
+    },
+    {
+      "id": 16,
+      "nom": "Sanogo",
+      "prenom": "Aïcha",
+      "email": "aicha.sanogo@email.com",
+      "telephone": "0798012345",
+      "motDePasse": "password107",
+      "role": "client",
+      "image": null
+    },
+    {
+      "id": 17,
+      "nom": "Touré",
+      "prenom": "Karim",
+      "email": "karim.toure@email.com",
+      "telephone": "0723456789",
+      "motDePasse": "password108",
+      "role": "prestataire",
+      "image": null
+    },
+    {
+      "id": 18,
+      "nom": "Bakayoko",
+      "prenom": "Aminata",
+      "email": "aminata.bakayoko@email.com",
+      "telephone": "0745612398",
+      "motDePasse": "password109",
+      "role": "client",
+      "image": null
+    },
+    {
+      "id": 19,
+      "nom": "Coulibaly",
+      "prenom": "Moussa",
+      "email": "moussa.coulibaly@email.com",
+      "telephone": "0789456123",
+      "motDePasse": "password110",
+      "role": "client",
+      "image": null
+    },
+    {
+      "id": 20,
+      "nom": "Diabaté",
+      "prenom": "Salimata",
+      "email": "salimata.diabate@email.com",
+      "telephone": "0712345098",
+      "motDePasse": "password111",
+      "role": "prestataire",
+      "image": null
+    },
+    {
+      "id": 21,
+      "nom": "Fofana",
+      "prenom": "Lassina",
+      "email": "lassina.fofana@email.com",
+      "telephone": "0756098765",
+      "motDePasse": "password112",
+      "role": "client",
+      "image": null
+    },
+    {
+      "id": 22,
+      "nom": "Gnabro",
+      "prenom": "Sylvie",
+      "email": "sylvie.gnabro@email.com",
+      "telephone": "0798765012",
+      "motDePasse": "password113",
+      "role": "client",
+      "image": null
+    },
+    {
+      "id": 23,
+      "nom": "Konan",
+      "prenom": "Yves",
+      "email": "yves.konan@email.com",
+      "telephone": "0723098456",
+      "motDePasse": "password114",
+      "role": "prestataire",
+      "image": null
+    },
+    {
+      "id": 24,
+      "nom": "Brou",
+      "prenom": "Ange",
+      "email": "ange.brou@email.com",
+      "telephone": "0745123098",
+      "motDePasse": "password115",
+      "role": "client",
+      "image": null
+    },
+    {
+      "id": 25,
+      "nom": "Dembélé",
+      "prenom": "Fatoumata",
+      "email": "fatoumata.dembele@email.com",
+      "telephone": "0789012345",
+      "motDePasse": "password116",
+      "role": "client",
+      "image": null
+    },
+    {
+      "id": 26,
+      "nom": "Kaboré",
+      "prenom": "Raoul",
+      "email": "raoul.kabore@email.com",
+      "telephone": "0712098765",
+      "motDePasse": "password117",
+      "role": "prestataire",
+      "image": null
+    }
+  ],
+  "clients": [
+    {
+      "id": 1,
+      "nom": "koffi",
+      "prenom": "jean",
+      "email": "jean.koffi@email.com",
+      "telephone": "0112345678",
+      "motDePasse": "password123",
+      "role": "client",
+      "preferencePaiement": "carte",
+      "historiqueReservations": [1, 3],
+      "image": null
+    },
+    {
+      "id": 2,
+      "nom": "Coulibaly",
+      "prenom": "emmanuel",
+      "email": "emmanuel.coulibaly@email.com",
+      "telephone": "0587654321",
+      "motDePasse": "password456",
+      "role": "client",
+      "preferencePaiement": "paypal",
+      "historiqueReservations": [2],
+      "image": null
+    },
+    {
+      "id": 3,
+      "nom": "Doué",
+      "prenom": "Julie",
+      "email": "julie.doué@email.com",
+      "telephone": "0745123789",
+      "motDePasse": "password789",
+      "role": "client",
+      "preferencePaiement": "carte",
+      "historiqueReservations": [],
+      "image": null
+    },
+    {
+      "id": 4,
+      "nom": "Soro",
+      "prenom": "Aya",
+      "email": "soro.aya@email.com",
+      "telephone": "0756789012",
+      "motDePasse": "cadre2024",
+      "role": "client",
+      "preferencePaiement": "orange_money",
+      "historiqueReservations": [],
+      "image": null
+    },
+    {
+      "id": 5,
+      "nom": "Fatou",
+      "prenom": "Aminata",
+      "email": "fatou.aminata@email.com",
+      "telephone": "0198765432",
+      "motDePasse": "mariage456",
+      "role": "client",
+      "preferencePaiement": "mtn_money",
+      "historiqueReservations": [],
+      "image": "https://images.unsplash.com/photo-1519415510236-718bdfcd89c8?w=400"
+    }
+  ],
+  "prestataires": [
+    {
+      "id": 4,
+      "nom": "Koffi",
+      "prenom": "Marie",
+      "email": "koffi.marie@email.com",
+      "telephone": "0123456789",
+      "motDePasse": "salon123",
+      "role": "prestataire",
+      "servicesProposed": [1, 2, 3],
+      "planning": 1,
+      "avis": [1, 2],
+      "catalogue": [1, 2, 3],
+      "mobileMonkey": "0707070707",
+      "image": "/images/prestataires/marie-koffi.jpg",
+      "specialite": "Coiffeuse",
+      "adresse": "Rue des palmiers",
+      "ville": "Abidjan",
+      "quartier": "Koumassi Remblais",
+      "latitude": 5.2898,
+      "longitude": -3.9780,
+      "joursDisponibles": ["lundi", "mardi", "mercredi"],
+      "heureOuverture": "07:30",
+      "heureFermeture": "18:30",
+      "disponibilite24h": false,
+      "serviceDomicile": true,
+      "serviceSalon": true
+    },
+    {
+      "id": 5,
+      "nom": "Sofi",
+      "prenom": "Claire",
+      "email": "sofi.claire@email.com",
+      "telephone": "0156789012",
+      "motDePasse": "makeup789",
+      "role": "prestataire",
+      "servicesProposed": [1, 4, 6],
+      "planning": 2,
+      "avis": [],
+      "catalogue": [1, 4, 6],
+      "mobileMonkey": "0505050505",
+      "image": "/images/prestataires/maquilleuse.jpg",
+      "specialite": "Maquilleuse",
+      "adresse": "Zone 4",
+      "ville": "Abidjan",
+      "quartier": "Marcory",
+      "latitude": 5.2933,
+      "longitude": -3.9936,
+      "joursDisponibles": ["lundi", "mardi", "mercredi", "jeudi", "vendredi", "samedi", "dimanche"],
+      "heureOuverture": "00:00",
+      "heureFermeture": "23:59",
+      "disponibilite24h": true,
+      "serviceDomicile": true,
+      "serviceSalon": false
+    },
+    {
+      "id": 6,
+      "nom": "Yao",
+      "prenom": "Koffi",
+      "email": "yao.koffi@email.com",
+      "telephone": "0145678901",
+      "motDePasse": "spa2024",
+      "role": "prestataire",
+      "servicesProposed": [7, 8, 9],
+      "planning": 3,
+      "avis": [],
+      "catalogue": [7, 8, 9],
+      "mobileMonkey": "0404040404",
+      "image": "/images/prestataires/spa.jpg",
+      "specialite": "Spa & Bien-être",
+      "adresse": "Immeuble SCIAM",
+      "ville": "Abidjan",
+      "quartier": "Plateau",
+      "latitude": 5.3250,
+      "longitude": -4.0267,
+      "joursDisponibles": ["lundi", "mardi", "mercredi", "jeudi", "vendredi", "samedi"],
+      "heureOuverture": "08:00",
+      "heureFermeture": "20:00",
+      "disponibilite24h": false,
+      "serviceDomicile": false,
+      "serviceSalon": true
+    },
+    {
+      "id": 7,
+      "nom": "Touré",
+      "prenom": "Aminata",
+      "email": "aminata.toure@email.com",
+      "telephone": "0789123456",
+      "motDePasse": "nails2024",
+      "role": "prestataire",
+      "servicesProposed": [5, 10],
+      "planning": 4,
+      "avis": [],
+      "catalogue": [5, 10],
+      "mobileMonkey": "0606060606",
+      "image": "/images/prestataires/maniqure&pedicure.jpg",
+      "specialite": "Manucure & Pédicure",
+      "adresse": "Avenue 13",
+      "ville": "Abidjan",
+      "quartier": "Cocody Angré",
+      "latitude": 5.3599,
+      "longitude": -3.9870,
+      "joursDisponibles": ["mardi", "mercredi", "jeudi", "vendredi", "samedi"],
+      "heureOuverture": "09:00",
+      "heureFermeture": "19:00",
+      "disponibilite24h": false,
+      "serviceDomicile": true,
+      "serviceSalon": true
+    }
+   
+    
+  ],
+  "services": [
+    {
+      "id": 1,
+      "nom": "Coupe femme",
+      "description": "Coupe de cheveux pour femme avec shampoing",
+      "prix": 15000,
+      "duree": 45,
+      "image": "https://images.unsplash.com/photo-1562322140-8baeececf3df?w=400"
+    },
+    {
+      "id": 2,
+      "nom": "Brushing",
+      "description": "Brushing professionnel",
+      "prix": 10000,
+      "duree": 30,
+      "image": "/images/prestataires/brushing.jpg"
+    },
+    {
+      "id": 3,
+      "nom": "Coloration",
+      "description": "Coloration complète avec soin",
+      "prix": 35000,
+      "duree": 120,
+      "image": "/images/prestataires/coloration.jpg"
+    },
+    {
+      "id": 4,
+      "nom": "Soin du visage",
+      "description": "Soin complet du visage avec masque",
+      "prix": 25000,
+      "duree": 60,
+      "image": "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=400"
+    },
+    {
+      "id": 5,
+      "nom": "Épilation sourcils",
+      "description": "Épilation et mise en forme des sourcils",
+      "prix": 5000,
+      "duree": 20,
+      "image": "/images/prestataires/epilation.jpg"
+    },
+    {
+      "id": 6,
+      "nom": "Manucure",
+      "description": "Manucure classique avec vernis",
+      "prix": 12000,
+      "duree": 45,
+      "image": "https://images.unsplash.com/photo-1604654894610-df63bc536371?w=400"
+    },
+    {
+      "id": 7,
+      "nom": "Massage relaxant",
+      "description": "Massage complet du corps 1h",
+      "prix": 40000,
+      "duree": 60,
+      "image": "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=400"
+    },
+    {
+      "id": 8,
+      "nom": "Hammam",
+      "description": "Séance de hammam avec gommage",
+      "prix": 30000,
+      "duree": 90,
+      "image": "/images/prestataires/gommage.jpg"
+    },
+    {
+      "id": 9,
+      "nom": "Pédicure",
+      "description": "Pédicure complète avec vernis",
+      "prix": 18000,
+      "duree": 60,
+      "image": "/images/prestataires/pedicure.jpg"
+    }
+  ],
+  "reservations": [
+    {
+      "id": 1,
+      "clientId": 1,
+      "prestataireId": 4,
+      "serviceId": 1,
+      "date": "2025-10-15T10:00:00",
+      "statut": "confirmée"
+    },
+    {
+      "id": 2,
+      "clientId": 5,
+      "prestataireId": 4,
+      "serviceId": 4,
+      "date": "2025-10-16T14:30:00",
+      "statut": "confirmée"
+    },
+    {
+      "id": 3,
+      "clientId": 1,
+      "prestataireId": 4,
+      "serviceId": 3,
+      "date": "2025-10-20T09:00:00",
+      "statut": "en_attente"
+    }
+  ],
+  "plannings": [
+    {
+      "id": 1,
+      "prestataireId": 4,
+      "creneauHoraire": "09:00-19:00",
+      "disponibilite": true,
+      "joursOuvrables": ["lundi", "mardi", "mercredi", "jeudi", "vendredi", "samedi"],
+      "horaires": {
+        "ouverture": "09:00",
+        "fermeture": "19:00"
+      },
+      "creneaux": [
+        {
+          "id": 1001,
+          "date": "2025-10-15",
+          "heureDebut": "10:00",
+          "heureFin": "10:45",
+          "disponible": false
+        },
+        {
+          "id": 1002,
+          "date": "2025-10-15",
+          "heureDebut": "11:00",
+          "heureFin": "11:45",
+          "disponible": true
+        },
+        {
+          "id": 1003,
+          "date": "2025-10-15",
+          "heureDebut": "14:00",
+          "heureFin": "14:45",
+          "disponible": true
+        },
+        {
+          "id": 1004,
+          "date": "2025-11-05",
+          "heureDebut": "09:00",
+          "heureFin": "09:45",
+          "disponible": true
+        },
+        {
+          "id": 1005,
+          "date": "2025-11-05",
+          "heureDebut": "10:00",
+          "heureFin": "10:45",
+          "disponible": true
+        },
+        {
+          "id": 1006,
+          "date": "2025-11-08",
+          "heureDebut": "15:00",
+          "heureFin": "16:30",
+          "disponible": true
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "prestataireId": 5,
+      "creneauHoraire": "00:00-23:59",
+      "disponibilite": true,
+      "joursOuvrables": ["lundi", "mardi", "mercredi", "jeudi", "vendredi", "samedi", "dimanche"],
+      "horaires": {
+        "ouverture": "00:00",
+        "fermeture": "23:59"
+      },
+      "creneaux": [
+        {
+          "id": 2001,
+          "date": "2025-10-17",
+          "heureDebut": "09:00",
+          "heureFin": "10:00",
+          "disponible": true
+        },
+        {
+          "id": 2002,
+          "date": "2025-10-17",
+          "heureDebut": "11:00",
+          "heureFin": "12:30",
+          "disponible": true
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "prestataireId": 6,
+      "creneauHoraire": "08:00-20:00",
+      "disponibilite": true,
+      "joursOuvrables": ["lundi", "mardi", "mercredi", "jeudi", "vendredi", "samedi"],
+      "horaires": {
+        "ouverture": "08:00",
+        "fermeture": "20:00"
+      },
+      "creneaux": [
+        {
+          "id": 3001,
+          "date": "2025-10-18",
+          "heureDebut": "10:00",
+          "heureFin": "11:00",
+          "disponible": true
+        }
+      ]
+    }
+  ],
+  "paiements": [
+    {
+      "id": 1,
+      "reservationId": 1,
+      "montant": 15000,
+      "modePaiement": "mtn_money",
+      "statut": "confirmé"
+    },
+    {
+      "id": 2,
+      "reservationId": 2,
+      "montant": 25000,
+      "modePaiement": "orange_money",
+      "statut": "confirmé"
+    },
+    {
+      "id": 3,
+      "reservationId": 3,
+      "montant": 35000,
+      "modePaiement": "mtn_money",
+      "statut": "en_attente"
+    }
+  ],
+  "avis": [
+    {
+      "id": 1,
+      "clientId": 1,
+      "prestataireId": 4,
+      "note": 5,
+      "commentaire": "Excellent service, très professionnelle !",
+      "date": "2025-10-10T14:30:00"
+    },
+    {
+      "id": 2,
+      "clientId": 2,
+      "prestataireId": 4,
+      "note": 4,
+      "commentaire": "Très bien, je recommande",
+      "date": "2025-10-11T16:45:00"
+    }
+  ],
+  "notifications": [
+    {
+      "id": 1,
+      "utilisateurId": 1,
+      "type": "confirmation",
+      "message": "Votre réservation pour le 15/10/2025 à 10:00 est confirmée",
+      "lu": true
+    },
+    {
+      "id": 2,
+      "utilisateurId": 1,
+      "type": "rappel",
+      "message": "Rappel: RDV demain à 10:00 chez Coiffure Beauté",
+      "lu": false
+    },
+    {
+      "id": 3,
+      "utilisateurId": 2,
+      "type": "confirmation",
+      "message": "Votre réservation pour le 16/10/2025 à 14:30 est confirmée",
+      "lu": true
+    },
+    {
+      "id": 4,
+      "utilisateurId": 4,
+      "type": "nouvelle_reservation",
+      "message": "Nouvelle réservation reçue de Marie Dupont",
+      "lu": false
+    }
+  ]
+}

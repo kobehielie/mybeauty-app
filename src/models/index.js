@@ -1,0 +1,9 @@
+export { default as Utilisateur } from './Utilisateur.js';
+export { default as Client } from './Client.js';
+export { default as Prestataire } from './Prestataire.js';
+export { default as Reservation } from './Reservation.js';
+export { default as Notification } from './Notification.js';
+export { default as Paiement } from './Paiement.js';
+export { default as Service } from './Service.js';
+export { default as Planning } from './Planning.js';
+export { default as Avis } from './Avis.js';
