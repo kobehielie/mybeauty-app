@@ -22,7 +22,6 @@ import ProfilClient from './Components/ProfilClient';           // Page profil d
 import MesServices from './Components/MesServices';             // Page gestion des services du prestataire
 import GestionPlanning from './Components/GestionPlanning.jsx';     // Page gestion planning
 import ChatInterface from './Components/ChatInterface';         // Page de chat dynamique
-import DebugApp from './Components/DebugApp';                   // Page de débogage temporaire
 
 // Composant principal de l'application
 function App() {
@@ -62,9 +61,6 @@ function App() {
 
         {/* Route pour le chat dynamique */}
         <Route path="/chat" element={<ChatInterface />} />
-
-        {/* Route temporaire pour le débogage */}
-        <Route path="/debug" element={<DebugApp />} />
 
         {/*
           Pour ajouter une nouvelle page :
