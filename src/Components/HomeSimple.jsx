@@ -198,8 +198,8 @@ function Home() {
                     </section>
 
                     {/* Statistiques */}
-                    <section className="grid grid-cols-3 gap-6 mb-12" aria-labelledby="stats-title">
-                        <h3 id="stats-title" className="sr-only">Statistiques de la plateforme</h3>
+                    <div className="grid grid-cols-3 gap-6 mb-12">
+                        <h3 className="sr-only">Statistiques de la plateforme</h3>
                         <div className="bg-white p-6 rounded-xl shadow-md border-l-4 border-blue-500 hover:shadow-lg transition">
                             <div className="text-4xl font-bold text-blue-600">{data.clients.length}</div>
                             <div className="text-gray-600 mt-1">Clients satisfaits</div>
@@ -218,7 +218,7 @@ function Home() {
                             <div className="text-4xl font-bold text-green-600">{data.services.length}</div>
                             <div className="text-gray-600 mt-1">Services proposés</div>
                         </div>
-                    </section>
+                    </div>
 
                     {/* Prestataires */}
                     <section className="mb-12" aria-labelledby="prestataires-title">

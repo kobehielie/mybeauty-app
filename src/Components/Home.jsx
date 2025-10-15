@@ -289,8 +289,8 @@ function Home() {
                     </section>
 
                     {/* Statistiques */}
-                    <section className="grid grid-cols-3 gap-6 mb-12" aria-labelledby="stats-title">
-                        <h3 id="stats-title" className="sr-only">Statistiques de la plateforme</h3>
+                    <div className="grid grid-cols-3 gap-6 mb-12">
+                        <h3 className="sr-only">Statistiques de la plateforme</h3>
                         <div 
                             onClick={() => {
                                 // Si l'utilisateur est un prestataire, aller vers ses clients
@@ -320,7 +320,7 @@ function Home() {
                             <div className="text-4xl font-bold text-green-600">{data.services.length}</div>
                             <div className="text-gray-600 mt-1">Services proposés</div>
                         </div>
-                    </section>
+                    </div>
 
                     {/* Prestataires */}
                     <section className="mb-12" aria-labelledby="prestataires-title">
@@ -382,9 +382,9 @@ function Home() {
             </main>
 
             {/* Section Support & Contact */}
-            <section className="bg-gray-50 py-12" aria-labelledby="support-title">
+            <section className="bg-gray-50 py-12">
                 <div className="max-w-7xl mx-auto px-8">
-                    <h2 id="support-title" className="text-3xl font-bold mb-8 text-gray-800 text-center">
+                    <h2 className="text-3xl font-bold mb-8 text-gray-800 text-center">
                         📞 Support & Contact
                     </h2>
                     

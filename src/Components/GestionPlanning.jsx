@@ -151,8 +151,8 @@ const GestionPlanning = () => {
 
             <main className="max-w-7xl mx-auto p-8" role="main">
                 {/* Contrôles */}
-                <section className="bg-white rounded-2xl shadow-lg p-6 mb-8" aria-labelledby="controls-title">
-                    <h2 id="controls-title" className="sr-only">Contrôles du planning</h2>
+                <div className="bg-white rounded-2xl shadow-lg p-6 mb-8">
+                    <h2 className="sr-only">Contrôles du planning</h2>
                     <div className="flex justify-between items-center mb-6">
                         <div className="flex gap-4">
                             <select 
@@ -181,13 +181,12 @@ const GestionPlanning = () => {
                             ➕ Ajouter un créneau
                         </button>
                     </div>
-
                     {/* Statistiques */}
-                    <section className="grid grid-cols-1 md:grid-cols-3 gap-4" aria-labelledby="stats-title">
-                        <h3 id="stats-title" className="sr-only">Statistiques du planning</h3>
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <h3 className="sr-only">Statistiques du planning</h3>
                         <div className="bg-blue-50 p-4 rounded-xl border-l-4 border-blue-500">
                             <p className="text-sm text-blue-600">Créneaux ce mois</p>
-                            <p className="text-3xl font-bold text-blue-700">{creneauxDuMois.length}</p>
+                            <p className="text-2xl font-bold text-red-600">{creneauxDuMois.length}</p>
                         </div>
                         <div className="bg-green-50 p-4 rounded-xl border-l-4 border-green-500">
                             <p className="text-sm text-green-600">Disponibles</p>
@@ -201,12 +200,12 @@ const GestionPlanning = () => {
                                 {creneauxDuMois.filter(c => !c.disponible).length}
                             </p>
                         </div>
-                    </section>
-                </section>
+                    </div>
+                </div>
 
                 {/* Liste des créneaux */}
-                <section className="bg-white rounded-2xl shadow-lg p-6" aria-labelledby="creneaux-title">
-                    <h2 id="creneaux-title" className="text-2xl font-bold text-gray-800 mb-6">
+                <div className="bg-white rounded-2xl shadow-lg p-6">
+                    <h2 className="text-2xl font-bold text-gray-800 mb-6">
                         Créneaux de {mois[selectedMonth]} {selectedYear}
                     </h2>
 
@@ -283,7 +282,7 @@ const GestionPlanning = () => {
                                 ))}
                         </div>
                     )}
-                </section>
+                </div>
             </main>
 
             {/* Modal d'ajout */}
@@ -291,8 +290,7 @@ const GestionPlanning = () => {
                 <div 
                     className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4" 
                     role="dialog" 
-                    aria-modal="true" 
-                    aria-labelledby="modal-title"
+                    aria-modal="true"
                     onClick={(e) => {
                         if (e.target === e.currentTarget) {
                             setShowModal(false);
@@ -300,7 +298,7 @@ const GestionPlanning = () => {
                     }}
                 >
                     <div className="bg-white rounded-2xl shadow-2xl p-8 max-w-md w-full">
-                        <h2 id="modal-title" className="text-2xl font-bold text-gray-800 mb-6">➕ Nouveau créneau</h2>
+                        <h2 className="text-2xl font-bold text-gray-800 mb-6">➕ Nouveau créneau</h2>
                         
                         <div className="space-y-4">
                             <div>
