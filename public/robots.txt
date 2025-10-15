@@ -6,15 +6,15 @@ Allow: /connexion
 Allow: /profil
 Allow: /localisation
 
-# Bloquer les pages privées et de debug
-Disallow: /debug
+# Bloquer les pages privées
 Disallow: /dashboard-client
 Disallow: /dashboard-prestataire
 Disallow: /gestion-planning
 Disallow: /paiement
+Disallow: /chat
 
 # Sitemap
-Sitemap: https://mybeauty.ci/sitemap.xml
+Sitemap: https://mybeauty-app.vercel.app/sitemap.xml
 
 # Crawl-delay pour éviter la surcharge
 Crawl-delay: 1
