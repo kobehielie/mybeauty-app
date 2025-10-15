@@ -41,7 +41,7 @@ function ChatInterface() {
 
         try {
             // Charger toutes les données
-            const data = await dataLoader.loadData(); // Charger les données depuis le fichier JSON
+            const data = dataLoader.loadAll(); // Charger les données depuis le fichier JSON
             
             // Trouver les réservations de ce client
             const reservationsClient = data.reservations.filter(reservation => 
