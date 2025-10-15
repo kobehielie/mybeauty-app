@@ -139,8 +139,8 @@ function Home() {
             
             <main className="flex-1 p-8" role="main">
                 <div className="max-w-7xl mx-auto">
-                    <section className="text-center mb-12" aria-labelledby="welcome-title">
-                        <h2 id="welcome-title" className="text-4xl font-bold text-gray-800 mb-4">
+                    <section className="text-center mb-12">
+                        <h2 className="text-4xl font-bold text-gray-800 mb-4">
                             Bienvenue sur MyBeauty
                         </h2>
                         <p className="text-xl text-gray-600 mb-8">
@@ -221,8 +221,8 @@ function Home() {
                     </div>
 
                     {/* Prestataires */}
-                    <section className="mb-12" aria-labelledby="prestataires-title">
-                        <h2 id="prestataires-title" className="text-3xl font-bold mb-6 text-gray-800">Nos Prestataires</h2>
+                    <section className="mb-12">
+                        <h2 className="text-3xl font-bold mb-6 text-gray-800">Nos Prestataires</h2>
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                             {data.prestataires.map(p => {
                                 // Charger les avis du mockData

@@ -136,8 +136,8 @@ function Services() {
             <main className="flex-1 p-8" role="main">
                 <div className="max-w-7xl mx-auto">
                     {/* Titre de la section */}
-                    <section className="text-center mb-12" aria-labelledby="services-title">
-                        <h2 id="services-title" className="text-4xl font-bold text-gray-800 mb-4">
+                    <section className="text-center mb-12">
+                        <h2 className="text-4xl font-bold text-gray-800 mb-4">
                             🌟 Services Populaires
                         </h2>
                         <p className="text-xl text-gray-600">
