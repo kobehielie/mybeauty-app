@@ -1,5 +1,6 @@
 // Version simplifiée de l'AuthContext pour diagnostiquer
 import { createContext, useContext, useState, useEffect } from 'react';
+import mockData from '../data/mockData.json';
 
 // Créer le contexte d'authentification
 const AuthContext = createContext();
@@ -44,9 +45,8 @@ export const AuthProvider = ({ children }) => {
         try {
             setLoading(true);
             
-            // Charger les données depuis le fichier JSON
-            const response = await fetch('/src/data/mockData.json');
-            const data = await response.json();
+            // Utiliser les données importées directement (pas de fetch)
+            const data = mockData;
             
             // Chercher dans tous les utilisateurs (utilisateurs + clients + prestataires)
             const allUsers = [...data.utilisateurs, ...data.clients, ...data.prestataires];
