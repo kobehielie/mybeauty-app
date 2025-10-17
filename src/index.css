@@ -18,7 +18,6 @@ html {
   -ms-text-size-adjust: 100%;
   text-size-adjust: 100%;
   overflow-x: hidden;
-  scroll-behavior: smooth;
 }
 
 body {
@@ -26,35 +25,6 @@ body {
   position: relative;
   width: 100%;
   max-width: 100vw;
-  margin: 0;
-  padding: 0;
-}
-
-/* Empêcher tous les éléments de déborder */
-* {
-  box-sizing: border-box;
-}
-
-*:not(html):not(body) {
-  max-width: 100%;
-}
-
-/* Conteneurs qui peuvent déborder */
-img, video, iframe, embed, object {
-  max-width: 100%;
-  height: auto;
-}
-
-/* Empêcher le débordement des tableaux */
-table {
-  max-width: 100%;
-  table-layout: fixed;
-}
-
-/* Empêcher le débordement du texte */
-pre, code {
-  overflow-x: auto;
-  max-width: 100%;
 }
 
 /* Conteneur principal qui s'adapte au zoom */
@@ -62,38 +32,6 @@ pre, code {
   width: 100%;
   max-width: 100vw;
   overflow-x: hidden;
-}
-
-/* Root React - Empêcher le débordement */
-#root {
-  width: 100%;
-  max-width: 100vw;
-  overflow-x: hidden;
-  min-height: 100vh;
-}
-
-/* Tous les conteneurs directs */
-#root > * {
-  max-width: 100vw;
-  overflow-x: hidden;
-}
-
-/* Empêcher les grilles de déborder */
-.grid, [class*="grid-cols"] {
-  width: 100%;
-  max-width: 100%;
-}
-
-/* Empêcher les flex containers de déborder */
-.flex {
-  max-width: 100%;
-  min-width: 0;
-}
-
-/* Empêcher les éléments avec gap de déborder */
-[class*="gap-"] {
-  width: 100%;
-  max-width: 100%;
 }
 
 /* ============================================
