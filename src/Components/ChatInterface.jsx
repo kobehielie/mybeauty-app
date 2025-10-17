@@ -201,9 +201,9 @@ function ChatInterface() {
     };
 
     return (
-        <div className="h-screen bg-gray-50 flex flex-col md:flex-row">
+        <div className="h-screen bg-gray-50 flex flex-col md:flex-row overflow-hidden">
             {/* Liste des conversations avec historique des services */}
-            <div className="w-full md:w-1/3 border-r border-gray-200 bg-white md:block hidden">
+            <div className="w-full md:w-1/3 md:max-w-[400px] border-r border-gray-200 bg-white md:block hidden overflow-y-auto overflow-x-hidden flex-shrink-0">
                 <ConversationListAvecHistorique 
                     onSelectConversation={setActiveConversation}
                     prestatairesAvecHistorique={prestatairesAvecHistorique}
@@ -211,7 +211,7 @@ function ChatInterface() {
             </div>
 
             {/* Zone de chat principale */}
-            <div className="flex-1 flex flex-col">
+            <div className="flex-1 flex flex-col min-w-0 overflow-hidden">
                 {activeConversation ? (
                     <>
                         {/* Header de la conversation */}
@@ -248,7 +248,7 @@ function ChatInterface() {
                         </div>
 
                         {/* Messages */}
-                        <div className="flex-1 overflow-y-auto p-4 space-y-2">
+                        <div className="flex-1 overflow-y-auto overflow-x-hidden p-3 md:p-4 space-y-2">
                             {activeMessages.map((message, index) => {
                                 const isOwn = message.senderId === user?.id;
                                 const showAvatar = index === 0 || 
@@ -267,15 +267,15 @@ function ChatInterface() {
                         </div>
 
                         {/* Zone de saisie */}
-                        <div className="bg-white border-t border-gray-200 p-4">
-                            <form onSubmit={handleSendMessage} className="flex space-x-3">
+                        <div className="bg-white border-t border-gray-200 p-3 md:p-4 flex-shrink-0">
+                            <form onSubmit={handleSendMessage} className="flex space-x-2 md:space-x-3">
                                 <input
                                     ref={inputRef}
                                     type="text"
                                     value={newMessage}
                                     onChange={handleMessageChange}
                                     placeholder="Tapez votre message..."
-                                    className="flex-1 px-4 py-2 border border-gray-300 rounded-full focus:ring-2 focus:ring-pink-500 focus:border-transparent"
+                                    className="flex-1 min-w-0 px-3 md:px-4 py-2 text-sm md:text-base border border-gray-300 rounded-full focus:ring-2 focus:ring-pink-500 focus:border-transparent"
                                 />
                                 <button
                                     type="submit"
