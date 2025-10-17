@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Admin from '../models/Admin';
+import dataLoader from '../data/dataLoader';
 
 function DashboardAdmin() {
     const navigate = useNavigate();
@@ -44,6 +45,20 @@ function DashboardAdmin() {
             return;
         }
 
+        // Charger les données initiales depuis mockData si localStorage est vide
+        const clientsExistants = localStorage.getItem('clients');
+        const prestatairesExistants = localStorage.getItem('prestataires');
+        
+        if (!clientsExistants || !prestatairesExistants) {
+            const data = dataLoader.loadAll();
+            if (!clientsExistants) {
+                localStorage.setItem('clients', JSON.stringify(data.clients));
+            }
+            if (!prestatairesExistants) {
+                localStorage.setItem('prestataires', JSON.stringify(data.prestataires));
+            }
+        }
+
         const adminInstance = new Admin(
             utilisateurConnecte.id,
             utilisateurConnecte.nom,
@@ -56,7 +71,9 @@ function DashboardAdmin() {
     }, [navigate]);
 
     const chargerDonnees = (adminInstance) => {
-        setUtilisateurs(adminInstance.getTousLesUtilisateurs());
+        const tousLesUtilisateurs = adminInstance.getTousLesUtilisateurs();
+        console.log('Utilisateurs chargés:', tousLesUtilisateurs);
+        setUtilisateurs(tousLesUtilisateurs);
         setStatistiques(adminInstance.getStatistiques());
         setActivitesAdmin(adminInstance.voirActivitesAdmin(50));
     };
@@ -275,20 +292,38 @@ function DashboardAdmin() {
                             {utilisateursFiltres.length} utilisateur(s) trouvé(s)
                         </div>
 
-                        <div className="overflow-x-auto">
-                            <table className="w-full">
-                                <thead className="bg-gray-50">
-                                    <tr>
-                                        <th className="px-4 py-3 text-left text-sm font-semibold text-gray-700">ID</th>
-                                        <th className="px-4 py-3 text-left text-sm font-semibold text-gray-700">Nom</th>
-                                        <th className="px-4 py-3 text-left text-sm font-semibold text-gray-700">Email</th>
-                                        <th className="px-4 py-3 text-left text-sm font-semibold text-gray-700">Type</th>
-                                        <th className="px-4 py-3 text-left text-sm font-semibold text-gray-700">Statut</th>
-                                        <th className="px-4 py-3 text-left text-sm font-semibold text-gray-700">Actions</th>
-                                    </tr>
-                                </thead>
-                                <tbody className="divide-y divide-gray-200">
-                                    {utilisateursFiltres.map(utilisateur => (
+                        {utilisateursFiltres.length === 0 ? (
+                            <div className="text-center py-12 bg-gray-50 rounded-lg">
+                                <div className="text-6xl mb-4">👥</div>
+                                <h3 className="text-xl font-semibold text-gray-800 mb-2">Aucun utilisateur trouvé</h3>
+                                <p className="text-gray-500 mb-6">
+                                    {rechercheTexte || filtreType !== 'tous' 
+                                        ? 'Essayez de modifier vos filtres de recherche'
+                                        : 'Commencez par ajouter des utilisateurs à la plateforme'
+                                    }
+                                </p>
+                                <button
+                                    onClick={() => setShowModalAjout(true)}
+                                    className="bg-gradient-to-r from-green-500 to-emerald-600 text-white px-6 py-3 rounded-lg font-semibold hover:from-green-600 hover:to-emerald-700 transition"
+                                >
+                                    ➕ Ajouter le premier utilisateur
+                                </button>
+                            </div>
+                        ) : (
+                            <div className="overflow-x-auto">
+                                <table className="w-full">
+                                    <thead className="bg-gray-50">
+                                        <tr>
+                                            <th className="px-4 py-3 text-left text-sm font-semibold text-gray-700">ID</th>
+                                            <th className="px-4 py-3 text-left text-sm font-semibold text-gray-700">Nom</th>
+                                            <th className="px-4 py-3 text-left text-sm font-semibold text-gray-700">Email</th>
+                                            <th className="px-4 py-3 text-left text-sm font-semibold text-gray-700">Type</th>
+                                            <th className="px-4 py-3 text-left text-sm font-semibold text-gray-700">Statut</th>
+                                            <th className="px-4 py-3 text-left text-sm font-semibold text-gray-700">Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody className="divide-y divide-gray-200">
+                                        {utilisateursFiltres.map(utilisateur => (
                                         <tr key={`${utilisateur.type}-${utilisateur.id}`} className="hover:bg-gray-50">
                                             <td className="px-4 py-3 text-sm">{utilisateur.id}</td>
                                             <td className="px-4 py-3 text-sm font-medium">{utilisateur.prenom} {utilisateur.nom}</td>
@@ -335,9 +370,10 @@ function DashboardAdmin() {
                                             </td>
                                         </tr>
                                     ))}
-                                </tbody>
-                            </table>
-                        </div>
+                                    </tbody>
+                                </table>
+                            </div>
+                        )}
                     </div>
                 )}
 
