@@ -201,9 +201,9 @@ function ChatInterface() {
     };
 
     return (
-        <div className="h-screen bg-gray-50 flex">
+        <div className="h-screen bg-gray-50 flex flex-col md:flex-row">
             {/* Liste des conversations avec historique des services */}
-            <div className="w-1/3 border-r border-gray-200 bg-white">
+            <div className="w-full md:w-1/3 border-r border-gray-200 bg-white md:block hidden">
                 <ConversationListAvecHistorique 
                     onSelectConversation={setActiveConversation}
                     prestatairesAvecHistorique={prestatairesAvecHistorique}
@@ -215,22 +215,22 @@ function ChatInterface() {
                 {activeConversation ? (
                     <>
                         {/* Header de la conversation */}
-                        <div className="bg-white border-b border-gray-200 p-4">
+                        <div className="bg-white border-b border-gray-200 p-3 md:p-4">
                             <div className="flex items-center justify-between">
-                                <div className="flex items-center space-x-3">
-                                    <div className="w-10 h-10 bg-gradient-to-r from-pink-400 to-purple-500 rounded-full flex items-center justify-center text-white font-semibold">
+                                <div className="flex items-center space-x-2 md:space-x-3 flex-1 min-w-0">
+                                    <div className="w-8 h-8 md:w-10 md:h-10 bg-gradient-to-r from-pink-400 to-purple-500 rounded-full flex items-center justify-center text-white font-semibold text-sm md:text-base flex-shrink-0">
                                         {activeConversation.participantInfo?.prenom?.charAt(0) || 'U'}
                                     </div>
-                                    <div>
-                                        <h3 className="font-semibold text-gray-800">
+                                    <div className="flex-1 min-w-0">
+                                        <h3 className="font-semibold text-gray-800 text-sm md:text-base truncate">
                                             {activeConversation.participantInfo?.prenom} {activeConversation.participantInfo?.nom}
                                         </h3>
-                                        <p className="text-sm text-gray-500">
+                                        <p className="text-xs md:text-sm text-gray-500 truncate">
                                             {activeConversation.participantInfo?.specialite}
                                         </p>
                                     </div>
                                 </div>
-                                <div className="flex space-x-2">
+                                <div className="flex space-x-1 md:space-x-2 flex-shrink-0">
                                     <button
                                         onClick={handleBookingRequest}
                                         className="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-xs hover:bg-blue-200 transition"

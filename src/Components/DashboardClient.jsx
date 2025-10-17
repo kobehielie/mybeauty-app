@@ -120,35 +120,52 @@ function DashboardClient() {
     return (
         <div className="min-h-screen bg-gray-50">
             {/* En-tête avec informations du client */}
-            <header className="bg-gradient-to-r from-pink-500 to-purple-600 text-white p-6 shadow-lg">
-                <div className="max-w-7xl mx-auto flex justify-between items-center">
-                    <div className="flex items-center gap-4">
-                        <button
-                            onClick={() => navigate('/profil')}
-                            className="text-white hover:text-pink-200 transition"
-                        >
-                            ← Retour au profil
-                        </button>
-                        <div className="text-center">
-                            <h1 className="text-2xl font-bold">📅 Mes Réservations</h1>
-                            <p className="text-sm opacity-90">Gérez vos rendez-vous beauté</p>
-                        </div>
-                    </div>
-
-                    {/* Informations du client connecté */}
-                    <div className="flex items-center gap-3">
-                        <UserAvatar user={clientConnecte} size="md" />
-                        <div className="text-right">
-                            <p className="font-semibold text-sm">{clientConnecte.prenom} {clientConnecte.nom}</p>
-                            <p className="text-xs opacity-90">{clientConnecte.email}</p>
+            <header className="bg-gradient-to-r from-pink-500 to-purple-600 text-white p-3 md:p-6 shadow-lg">
+                <div className="max-w-7xl mx-auto">
+                    {/* Version mobile */}
+                    <div className="flex md:hidden justify-between items-center">
+                        <div className="flex-1">
+                            <h1 className="text-lg font-bold">📅 Mes Réservations</h1>
+                            <p className="text-xs opacity-90">Gérez vos rendez-vous</p>
                         </div>
                         <button
                             onClick={seDeconnecter}
-                            className="bg-red-600 hover:bg-red-700 text-white px-3 py-1 rounded-lg text-sm transition flex items-center gap-2"
+                            className="bg-red-600 hover:bg-red-700 text-white px-3 py-2 rounded-lg text-xs transition"
                         >
-                            <img src="/images/deconnexion.png" alt="Déconnexion" className="w-4 h-4" />
                             Déconnexion
                         </button>
+                    </div>
+
+                    {/* Version desktop */}
+                    <div className="hidden md:flex justify-between items-center">
+                        <div className="flex items-center gap-4">
+                            <button
+                                onClick={() => navigate('/profil')}
+                                className="text-white hover:text-pink-200 transition"
+                            >
+                                ← Retour au profil
+                            </button>
+                            <div className="text-center">
+                                <h1 className="text-2xl font-bold">📅 Mes Réservations</h1>
+                                <p className="text-sm opacity-90">Gérez vos rendez-vous beauté</p>
+                            </div>
+                        </div>
+
+                        {/* Informations du client connecté */}
+                        <div className="flex items-center gap-3">
+                            <UserAvatar user={clientConnecte} size="md" />
+                            <div className="text-right">
+                                <p className="font-semibold text-sm">{clientConnecte.prenom} {clientConnecte.nom}</p>
+                                <p className="text-xs opacity-90">{clientConnecte.email}</p>
+                            </div>
+                            <button
+                                onClick={seDeconnecter}
+                                className="bg-red-600 hover:bg-red-700 text-white px-3 py-1 rounded-lg text-sm transition flex items-center gap-2"
+                            >
+                                <img src="/images/deconnexion.png" alt="Déconnexion" className="w-4 h-4" />
+                                Déconnexion
+                            </button>
+                        </div>
                     </div>
                 </div>
             </header>
