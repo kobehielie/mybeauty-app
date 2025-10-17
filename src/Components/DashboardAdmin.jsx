@@ -312,24 +312,24 @@ function DashboardAdmin() {
                                 </button>
                             </div>
                         ) : (
-                            <div className="overflow-x-auto">
-                                <table className="w-full">
+                            <div className="overflow-x-auto -mx-4 md:mx-0">
+                                <table className="w-full min-w-[640px]">
                                     <thead className="bg-gray-50">
                                         <tr>
-                                            <th className="px-4 py-3 text-left text-sm font-semibold text-gray-700">ID</th>
-                                            <th className="px-4 py-3 text-left text-sm font-semibold text-gray-700">Nom</th>
-                                            <th className="px-4 py-3 text-left text-sm font-semibold text-gray-700">Email</th>
-                                            <th className="px-4 py-3 text-left text-sm font-semibold text-gray-700">Type</th>
-                                            <th className="px-4 py-3 text-left text-sm font-semibold text-gray-700">Statut</th>
-                                            <th className="px-4 py-3 text-left text-sm font-semibold text-gray-700">Actions</th>
+                                            <th className="px-2 md:px-4 py-3 text-left text-xs md:text-sm font-semibold text-gray-700">ID</th>
+                                            <th className="px-2 md:px-4 py-3 text-left text-xs md:text-sm font-semibold text-gray-700">Nom</th>
+                                            <th className="px-2 md:px-4 py-3 text-left text-xs md:text-sm font-semibold text-gray-700 hidden sm:table-cell">Email</th>
+                                            <th className="px-2 md:px-4 py-3 text-left text-xs md:text-sm font-semibold text-gray-700">Type</th>
+                                            <th className="px-2 md:px-4 py-3 text-left text-xs md:text-sm font-semibold text-gray-700">Statut</th>
+                                            <th className="px-2 md:px-4 py-3 text-left text-xs md:text-sm font-semibold text-gray-700">Actions</th>
                                         </tr>
                                     </thead>
                                     <tbody className="divide-y divide-gray-200">
                                         {utilisateursFiltres.map(utilisateur => (
                                         <tr key={`${utilisateur.type}-${utilisateur.id}`} className="hover:bg-gray-50">
-                                            <td className="px-4 py-3 text-sm">{utilisateur.id}</td>
-                                            <td className="px-4 py-3 text-sm font-medium">{utilisateur.prenom} {utilisateur.nom}</td>
-                                            <td className="px-4 py-3 text-sm text-gray-600">{utilisateur.email}</td>
+                                            <td className="px-2 md:px-4 py-3 text-xs md:text-sm">{utilisateur.id}</td>
+                                            <td className="px-2 md:px-4 py-3 text-xs md:text-sm font-medium">{utilisateur.prenom} {utilisateur.nom}</td>
+                                            <td className="px-2 md:px-4 py-3 text-xs md:text-sm text-gray-600 hidden sm:table-cell">{utilisateur.email}</td>
                                             <td className="px-4 py-3 text-sm">
                                                 <span className={`px-2 py-1 rounded-full text-xs font-semibold ${
                                                     utilisateur.type === 'client' 

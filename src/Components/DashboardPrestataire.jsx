@@ -157,39 +157,56 @@ function DashboardPrestataire() {
     return (
         <div className="min-h-screen bg-gray-50">
             {/* En-tête avec informations du prestataire */}
-            <header className="bg-gradient-to-r from-pink-500 to-purple-600 text-white p-4 md:p-6 shadow-lg">
-                <div className="max-w-7xl mx-auto flex justify-between items-center">
-                    <div className="flex items-center gap-4">
-                        <button
-                            onClick={() => navigate('/profil')}
-                            className="text-white hover:text-pink-200 transition"
-                        >
-                            ← Retour au profil
-                        </button>
-                        <div className="text-center">
-                            <h1 className="text-2xl font-bold">📋 Mes Services</h1>
-                            <p className="text-sm opacity-90">Gérez votre activité beauté</p>
-                        </div>
-                    </div>
-
-                    {/* Informations du prestataire connecté */}
-                    <div className="flex items-center gap-3">
-                        <img
-                            src={prestataire.image || 'https://images.unsplash.com/photo-1560066984-138dadb4c035?w=400'}
-                            alt={prestataire.prenom}
-                            className="w-10 h-10 rounded-full border-2 border-white object-cover"
-                        />
-                        <div className="text-right">
-                            <p className="font-semibold text-sm">{prestataire.prenom} {prestataire.nom}</p>
-                            <p className="text-xs opacity-90">{prestataire.specialite}</p>
+            <header className="bg-gradient-to-r from-pink-500 to-purple-600 text-white p-3 md:p-6 shadow-lg">
+                <div className="max-w-7xl mx-auto">
+                    {/* Version mobile */}
+                    <div className="flex md:hidden justify-between items-center">
+                        <div className="flex-1 min-w-0">
+                            <h1 className="text-lg font-bold truncate">📋 Mes Services</h1>
+                            <p className="text-xs opacity-90 truncate">Gérez votre activité</p>
                         </div>
                         <button
                             onClick={seDeconnecter}
-                            className="bg-red-600 hover:bg-red-700 text-white px-3 py-1 rounded-lg text-sm transition flex items-center gap-2"
+                            className="bg-red-600 hover:bg-red-700 text-white px-3 py-2 rounded-lg text-xs transition flex-shrink-0 ml-2"
                         >
-                            <img src="/images/deconnexion.png" alt="Déconnexion" className="w-4 h-4" />
                             Déconnexion
                         </button>
+                    </div>
+
+                    {/* Version desktop */}
+                    <div className="hidden md:flex justify-between items-center">
+                        <div className="flex items-center gap-4">
+                            <button
+                                onClick={() => navigate('/profil')}
+                                className="text-white hover:text-pink-200 transition"
+                            >
+                                ← Retour au profil
+                            </button>
+                            <div className="text-center">
+                                <h1 className="text-2xl font-bold">📋 Mes Services</h1>
+                                <p className="text-sm opacity-90">Gérez votre activité beauté</p>
+                            </div>
+                        </div>
+
+                        {/* Informations du prestataire connecté */}
+                        <div className="flex items-center gap-3">
+                            <img
+                                src={prestataire.image || 'https://images.unsplash.com/photo-1560066984-138dadb4c035?w=400'}
+                                alt={prestataire.prenom}
+                                className="w-10 h-10 rounded-full border-2 border-white object-cover"
+                            />
+                            <div className="text-right">
+                                <p className="font-semibold text-sm">{prestataire.prenom} {prestataire.nom}</p>
+                                <p className="text-xs opacity-90">{prestataire.specialite}</p>
+                            </div>
+                            <button
+                                onClick={seDeconnecter}
+                                className="bg-red-600 hover:bg-red-700 text-white px-3 py-1 rounded-lg text-sm transition flex items-center gap-2"
+                            >
+                                <img src="/images/deconnexion.png" alt="Déconnexion" className="w-4 h-4" />
+                                Déconnexion
+                            </button>
+                        </div>
                     </div>
                 </div>
             </header>
@@ -211,35 +228,35 @@ function DashboardPrestataire() {
                     </div>
 
                     {/* Nombre total de réservations */}
-                    <div className="bg-white p-6 rounded-xl shadow-md text-center">
-                        <div className="text-3xl mb-2">📋</div>
-                        <h3 className="font-bold text-2xl text-gray-800 mb-1">{mesReservations.length}</h3>
-                        <p className="text-sm text-gray-600">Réservations totales</p>
+                    <div className="bg-white p-4 md:p-6 rounded-xl shadow-md text-center">
+                        <div className="text-2xl md:text-3xl mb-2">📋</div>
+                        <h3 className="font-bold text-xl md:text-2xl text-gray-800 mb-1">{mesReservations.length}</h3>
+                        <p className="text-xs md:text-sm text-gray-600">Réservations totales</p>
                     </div>
 
                     {/* Réservations confirmées */}
-                    <div className="bg-white p-6 rounded-xl shadow-md text-center">
-                        <div className="text-3xl mb-2">✅</div>
-                        <h3 className="font-bold text-2xl text-green-600 mb-1">
+                    <div className="bg-white p-4 md:p-6 rounded-xl shadow-md text-center">
+                        <div className="text-2xl md:text-3xl mb-2">✅</div>
+                        <h3 className="font-bold text-xl md:text-2xl text-green-600 mb-1">
                             {mesReservations.filter(r => r.statut === 'confirmée').length}
                         </h3>
-                        <p className="text-sm text-gray-600">Confirmées</p>
+                        <p className="text-xs md:text-sm text-gray-600">Confirmées</p>
                     </div>
 
                     {/* Réservations en attente */}
-                    <div className="bg-white p-6 rounded-xl shadow-md text-center">
-                        <div className="text-3xl mb-2">⏳</div>
-                        <h3 className="font-bold text-2xl text-yellow-600 mb-1">
+                    <div className="bg-white p-4 md:p-6 rounded-xl shadow-md text-center">
+                        <div className="text-2xl md:text-3xl mb-2">⏳</div>
+                        <h3 className="font-bold text-xl md:text-2xl text-yellow-600 mb-1">
                             {mesReservations.filter(r => r.statut === 'en_attente').length}
                         </h3>
-                        <p className="text-sm text-gray-600">En attente</p>
+                        <p className="text-xs md:text-sm text-gray-600">En attente</p>
                     </div>
 
                     {/* Spécialité */}
-                    <div className="bg-white p-6 rounded-xl shadow-md text-center">
-                        <div className="text-3xl mb-2">💅</div>
-                        <h3 className="font-bold text-xl text-purple-600 mb-1">{prestataire.specialite}</h3>
-                        <p className="text-sm text-gray-600">Ma spécialité</p>
+                    <div className="bg-white p-4 md:p-6 rounded-xl shadow-md text-center">
+                        <div className="text-2xl md:text-3xl mb-2">💅</div>
+                        <h3 className="font-bold text-lg md:text-xl text-purple-600 mb-1">{prestataire.specialite}</h3>
+                        <p className="text-xs md:text-sm text-gray-600">Ma spécialité</p>
                     </div>
                 </div>
 

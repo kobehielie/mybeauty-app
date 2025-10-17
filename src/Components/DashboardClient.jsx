@@ -174,28 +174,28 @@ function DashboardClient() {
                 {/* Statistiques rapides */}
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 md:gap-6 mb-6 md:mb-8">
                     {/* Nombre total de réservations */}
-                    <div className="bg-white p-6 rounded-xl shadow-md text-center">
+                    <div className="bg-white p-4 md:p-6 rounded-xl shadow-md text-center">
                         <div className="text-2xl md:text-3xl mb-2">📋</div>
-                        <h3 className="font-bold text-2xl text-gray-800 mb-1">{mesReservations.length}</h3>
-                        <p className="text-sm text-gray-600">Réservations totales</p>
+                        <h3 className="font-bold text-xl md:text-2xl text-gray-800 mb-1">{mesReservations.length}</h3>
+                        <p className="text-xs md:text-sm text-gray-600">Réservations totales</p>
                     </div>
 
                     {/* Réservations confirmées */}
-                    <div className="bg-white p-6 rounded-xl shadow-md text-center">
-                        <div className="text-3xl mb-2">✅</div>
-                        <h3 className="font-bold text-2xl text-green-600 mb-1">
+                    <div className="bg-white p-4 md:p-6 rounded-xl shadow-md text-center">
+                        <div className="text-2xl md:text-3xl mb-2">✅</div>
+                        <h3 className="font-bold text-xl md:text-2xl text-green-600 mb-1">
                             {mesReservations.filter(r => r.statut === 'confirmée').length}
                         </h3>
-                        <p className="text-sm text-gray-600">Confirmées</p>
+                        <p className="text-xs md:text-sm text-gray-600">Confirmées</p>
                     </div>
 
                     {/* Réservations en attente */}
-                    <div className="bg-white p-6 rounded-xl shadow-md text-center">
-                        <div className="text-3xl mb-2">⏳</div>
-                        <h3 className="font-bold text-2xl text-yellow-600 mb-1">
+                    <div className="bg-white p-4 md:p-6 rounded-xl shadow-md text-center">
+                        <div className="text-2xl md:text-3xl mb-2">⏳</div>
+                        <h3 className="font-bold text-xl md:text-2xl text-yellow-600 mb-1">
                             {mesReservations.filter(r => r.statut === 'en_attente').length}
                         </h3>
-                        <p className="text-sm text-gray-600">En attente</p>
+                        <p className="text-xs md:text-sm text-gray-600">En attente</p>
                     </div>
                 </div>
 
