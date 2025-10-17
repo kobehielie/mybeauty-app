@@ -201,6 +201,17 @@
       "image": null
     }
   ],
+  "admins": [
+    {
+      "id": 1,
+      "nom": "Admin",
+      "prenom": "Admin",
+      "email": "admin@admin.com",
+      "motDePasse": "admin123",
+      "role": "admin",
+      "dateCreation": "2025-01-01T00:00:00.000Z"
+    }
+  ],
   "clients": [
     {
       "id": 1,
@@ -212,7 +223,11 @@
       "role": "client",
       "preferencePaiement": "carte",
       "historiqueReservations": [1, 3],
-      "image": null
+      "image": null,
+      "actif": true,
+      "restrictions": [],
+      "dateInscription": "2025-01-15T10:30:00.000Z",
+      "derniereConnexion": "2025-10-17T18:00:00.000Z"
     },
     {
       "id": 2,
@@ -224,7 +239,11 @@
       "role": "client",
       "preferencePaiement": "paypal",
       "historiqueReservations": [2],
-      "image": null
+      "image": null,
+      "actif": true,
+      "restrictions": [],
+      "dateInscription": "2025-02-10T14:20:00.000Z",
+      "derniereConnexion": "2025-10-16T12:30:00.000Z"
     },
     {
       "id": 3,
@@ -236,7 +255,11 @@
       "role": "client",
       "preferencePaiement": "carte",
       "historiqueReservations": [],
-      "image": null
+      "image": null,
+      "actif": true,
+      "restrictions": [],
+      "dateInscription": "2025-03-05T09:15:00.000Z",
+      "derniereConnexion": "2025-10-15T16:45:00.000Z"
     },
     {
       "id": 4,
@@ -248,7 +271,11 @@
       "role": "client",
       "preferencePaiement": "orange_money",
       "historiqueReservations": [],
-      "image": null
+      "image": null,
+      "actif": true,
+      "restrictions": [],
+      "dateInscription": "2025-04-12T11:00:00.000Z",
+      "derniereConnexion": "2025-10-17T08:20:00.000Z"
     },
     {
       "id": 5,
@@ -260,7 +287,11 @@
       "role": "client",
       "preferencePaiement": "mtn_money",
       "historiqueReservations": [],
-      "image": "https://images.unsplash.com/photo-1519415510236-718bdfcd89c8?w=400"
+      "image": "https://images.unsplash.com/photo-1519415510236-718bdfcd89c8?w=400",
+      "actif": true,
+      "restrictions": [],
+      "dateInscription": "2025-05-20T15:30:00.000Z",
+      "derniereConnexion": "2025-10-17T19:00:00.000Z"
     }
   ],
   "prestataires": [
@@ -289,7 +320,11 @@
       "heureFermeture": "18:30",
       "disponibilite24h": false,
       "serviceDomicile": true,
-      "serviceSalon": true
+      "serviceSalon": true,
+      "actif": true,
+      "restrictions": [],
+      "dateInscription": "2025-01-10T08:00:00.000Z",
+      "derniereConnexion": "2025-10-17T17:30:00.000Z"
     },
     {
       "id": 5,
@@ -314,6 +349,10 @@
       "joursDisponibles": ["lundi", "mardi", "mercredi", "jeudi", "vendredi", "samedi", "dimanche"],
       "heureOuverture": "00:00",
       "heureFermeture": "23:59",
+      "actif": true,
+      "restrictions": [],
+      "dateInscription": "2025-02-15T10:00:00.000Z",
+      "derniereConnexion": "2025-10-17T14:20:00.000Z",
       "disponibilite24h": true,
       "serviceDomicile": true,
       "serviceSalon": false
