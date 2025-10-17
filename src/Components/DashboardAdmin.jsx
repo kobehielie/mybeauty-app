@@ -20,6 +20,21 @@ function DashboardAdmin() {
         dateFin: ''
     });
 
+    // Modal pour ajouter un utilisateur
+    const [showModalAjout, setShowModalAjout] = useState(false);
+    const [nouvelUtilisateur, setNouvelUtilisateur] = useState({
+        nom: '',
+        prenom: '',
+        email: '',
+        telephone: '',
+        motDePasse: '',
+        type: 'client'
+    });
+
+    // Filtres et recherche
+    const [filtreType, setFiltreType] = useState('tous');
+    const [rechercheTexte, setRechercheTexte] = useState('');
+
     useEffect(() => {
         // Vérifier si l'utilisateur connecté est un admin
         const utilisateurConnecte = JSON.parse(localStorage.getItem('utilisateurConnecte') || '{}');
@@ -94,6 +109,42 @@ function DashboardAdmin() {
             alert(result.message);
         }
     };
+
+    const ajouterUtilisateur = () => {
+        // Validation
+        if (!nouvelUtilisateur.nom || !nouvelUtilisateur.prenom || !nouvelUtilisateur.email || !nouvelUtilisateur.motDePasse) {
+            alert('Veuillez remplir tous les champs obligatoires');
+            return;
+        }
+
+        const result = admin.ajouterUtilisateur(nouvelUtilisateur, nouvelUtilisateur.type);
+        
+        if (result.success) {
+            alert(result.message);
+            setShowModalAjout(false);
+            setNouvelUtilisateur({
+                nom: '',
+                prenom: '',
+                email: '',
+                telephone: '',
+                motDePasse: '',
+                type: 'client'
+            });
+            chargerDonnees(admin);
+        } else {
+            alert(result.message);
+        }
+    };
+
+    // Filtrer les utilisateurs
+    const utilisateursFiltres = utilisateurs.filter(u => {
+        const matchType = filtreType === 'tous' || u.type === filtreType;
+        const matchRecherche = rechercheTexte === '' || 
+            u.nom.toLowerCase().includes(rechercheTexte.toLowerCase()) ||
+            u.prenom.toLowerCase().includes(rechercheTexte.toLowerCase()) ||
+            u.email.toLowerCase().includes(rechercheTexte.toLowerCase());
+        return matchType && matchRecherche;
+    });
 
     const deconnexion = () => {
         localStorage.removeItem('utilisateurConnecte');
@@ -187,7 +238,43 @@ function DashboardAdmin() {
 
                 {ongletActif === 'utilisateurs' && (
                     <div className="bg-white rounded-xl shadow-md p-6">
-                        <h2 className="text-2xl font-bold text-gray-800 mb-6">Liste des utilisateurs</h2>
+                        <div className="flex justify-between items-center mb-6">
+                            <h2 className="text-2xl font-bold text-gray-800">Gestion des utilisateurs</h2>
+                            <button
+                                onClick={() => setShowModalAjout(true)}
+                                className="bg-gradient-to-r from-green-500 to-emerald-600 text-white px-6 py-3 rounded-lg font-semibold hover:from-green-600 hover:to-emerald-700 transition shadow-lg flex items-center gap-2"
+                            >
+                                <span className="text-xl">➕</span>
+                                Ajouter un utilisateur
+                            </button>
+                        </div>
+
+                        {/* Filtres et recherche */}
+                        <div className="flex gap-4 mb-6">
+                            <div className="flex-1">
+                                <input
+                                    type="text"
+                                    placeholder="🔍 Rechercher par nom, prénom ou email..."
+                                    value={rechercheTexte}
+                                    onChange={(e) => setRechercheTexte(e.target.value)}
+                                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                                />
+                            </div>
+                            <select
+                                value={filtreType}
+                                onChange={(e) => setFiltreType(e.target.value)}
+                                className="px-4 py-3 border-2 border-gray-200 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                            >
+                                <option value="tous">Tous ({utilisateurs.length})</option>
+                                <option value="client">Clients ({utilisateurs.filter(u => u.type === 'client').length})</option>
+                                <option value="prestataire">Prestataires ({utilisateurs.filter(u => u.type === 'prestataire').length})</option>
+                            </select>
+                        </div>
+
+                        <div className="text-sm text-gray-600 mb-4">
+                            {utilisateursFiltres.length} utilisateur(s) trouvé(s)
+                        </div>
+
                         <div className="overflow-x-auto">
                             <table className="w-full">
                                 <thead className="bg-gray-50">
@@ -201,7 +288,7 @@ function DashboardAdmin() {
                                     </tr>
                                 </thead>
                                 <tbody className="divide-y divide-gray-200">
-                                    {utilisateurs.map(utilisateur => (
+                                    {utilisateursFiltres.map(utilisateur => (
                                         <tr key={`${utilisateur.type}-${utilisateur.id}`} className="hover:bg-gray-50">
                                             <td className="px-4 py-3 text-sm">{utilisateur.id}</td>
                                             <td className="px-4 py-3 text-sm font-medium">{utilisateur.prenom} {utilisateur.nom}</td>
@@ -379,6 +466,123 @@ function DashboardAdmin() {
                             <button
                                 onClick={ajouterRestriction}
                                 className="flex-1 px-6 py-3 bg-gradient-to-r from-purple-600 to-pink-500 text-white rounded-lg font-semibold hover:from-purple-700 hover:to-pink-600 transition"
+                            >
+                                Ajouter
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            )}
+
+            {/* Modal Ajout Utilisateur */}
+            {showModalAjout && (
+                <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+                    <div className="bg-white rounded-2xl shadow-2xl p-8 max-w-md w-full max-h-[90vh] overflow-y-auto">
+                        <h2 className="text-2xl font-bold text-gray-800 mb-6">
+                            ➕ Ajouter un utilisateur
+                        </h2>
+                        
+                        <div className="space-y-4">
+                            <div>
+                                <label className="block text-sm font-medium mb-2 text-gray-700">
+                                    Type d'utilisateur *
+                                </label>
+                                <select
+                                    value={nouvelUtilisateur.type}
+                                    onChange={(e) => setNouvelUtilisateur({...nouvelUtilisateur, type: e.target.value})}
+                                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                                >
+                                    <option value="client">Client</option>
+                                    <option value="prestataire">Prestataire</option>
+                                </select>
+                            </div>
+
+                            <div>
+                                <label className="block text-sm font-medium mb-2 text-gray-700">
+                                    Nom *
+                                </label>
+                                <input
+                                    type="text"
+                                    value={nouvelUtilisateur.nom}
+                                    onChange={(e) => setNouvelUtilisateur({...nouvelUtilisateur, nom: e.target.value})}
+                                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                                    placeholder="Nom de famille"
+                                />
+                            </div>
+
+                            <div>
+                                <label className="block text-sm font-medium mb-2 text-gray-700">
+                                    Prénom *
+                                </label>
+                                <input
+                                    type="text"
+                                    value={nouvelUtilisateur.prenom}
+                                    onChange={(e) => setNouvelUtilisateur({...nouvelUtilisateur, prenom: e.target.value})}
+                                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                                    placeholder="Prénom"
+                                />
+                            </div>
+
+                            <div>
+                                <label className="block text-sm font-medium mb-2 text-gray-700">
+                                    Email *
+                                </label>
+                                <input
+                                    type="email"
+                                    value={nouvelUtilisateur.email}
+                                    onChange={(e) => setNouvelUtilisateur({...nouvelUtilisateur, email: e.target.value})}
+                                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                                    placeholder="email@exemple.com"
+                                />
+                            </div>
+
+                            <div>
+                                <label className="block text-sm font-medium mb-2 text-gray-700">
+                                    Téléphone
+                                </label>
+                                <input
+                                    type="tel"
+                                    value={nouvelUtilisateur.telephone}
+                                    onChange={(e) => setNouvelUtilisateur({...nouvelUtilisateur, telephone: e.target.value})}
+                                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                                    placeholder="0123456789"
+                                />
+                            </div>
+
+                            <div>
+                                <label className="block text-sm font-medium mb-2 text-gray-700">
+                                    Mot de passe *
+                                </label>
+                                <input
+                                    type="password"
+                                    value={nouvelUtilisateur.motDePasse}
+                                    onChange={(e) => setNouvelUtilisateur({...nouvelUtilisateur, motDePasse: e.target.value})}
+                                    className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+                                    placeholder="Mot de passe"
+                                />
+                            </div>
+                        </div>
+
+                        <div className="flex gap-4 mt-6">
+                            <button
+                                onClick={() => {
+                                    setShowModalAjout(false);
+                                    setNouvelUtilisateur({
+                                        nom: '',
+                                        prenom: '',
+                                        email: '',
+                                        telephone: '',
+                                        motDePasse: '',
+                                        type: 'client'
+                                    });
+                                }}
+                                className="flex-1 px-6 py-3 bg-gray-200 text-gray-700 rounded-lg font-semibold hover:bg-gray-300 transition"
+                            >
+                                Annuler
+                            </button>
+                            <button
+                                onClick={ajouterUtilisateur}
+                                className="flex-1 px-6 py-3 bg-gradient-to-r from-green-500 to-emerald-600 text-white rounded-lg font-semibold hover:from-green-600 hover:to-emerald-700 transition"
                             >
                                 Ajouter
                             </button>
