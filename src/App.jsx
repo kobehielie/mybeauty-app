@@ -22,6 +22,7 @@ import ProfilClient from './Components/ProfilClient';           // Page profil d
 import MesServices from './Components/MesServices';             // Page gestion des services du prestataire
 import GestionPlanning from './Components/GestionPlanning.jsx';     // Page gestion planning
 import ChatInterface from './Components/ChatInterface';         // Page de chat dynamique
+import DashboardAdmin from './Components/DashboardAdmin';       // Dashboard administrateur
 
 // Composant principal de l'application
 function App() {
@@ -61,6 +62,9 @@ function App() {
 
         {/* Route pour le chat dynamique */}
         <Route path="/chat" element={<ChatInterface />} />
+
+        {/* Route pour le dashboard admin */}
+        <Route path="/dashboard-admin" element={<DashboardAdmin />} />
 
         {/*
           Pour ajouter une nouvelle page :

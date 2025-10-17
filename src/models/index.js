@@ -7,3 +7,4 @@ export { default as Paiement } from './Paiement.js';
 export { default as Service } from './Service.js';
 export { default as Planning } from './Planning.js';
 export { default as Avis } from './Avis.js';
+export { default as Admin } from './Admin.js';

@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../contexts/SimpleAuthContext';
 import { validateForm } from '../utils/validation';
+import Admin from '../models/Admin';
 
 const Connexion = () => {
     const [emailSaisi, setEmailSaisi] = useState('');
@@ -15,7 +16,9 @@ const Connexion = () => {
     // Rediriger si l'utilisateur est déjà connecté
     useEffect(() => {
         if (user) {
-            if (user.role === 'client') {
+            if (user.role === 'admin') {
+                navigate('/dashboard-admin');
+            } else if (user.role === 'client') {
                 navigate('/dashboard-client');
             } else if (user.role === 'prestataire') {
                 navigate('/dashboard-prestataire');
@@ -44,7 +47,23 @@ const Connexion = () => {
         }
 
         try {
-            // Tentative de connexion via le contexte d'authentification
+            // Vérifier d'abord si c'est un admin
+            if (emailSaisi === 'admin@admin.com') {
+                const resultAdmin = Admin.seConnecter(emailSaisi, motDePasseSaisi);
+                
+                if (resultAdmin.success) {
+                    setMessageAffiche(`✅ Bienvenue Admin !`);
+                    setTimeout(() => {
+                        navigate('/dashboard-admin');
+                    }, 1000);
+                    return;
+                } else {
+                    setMessageAffiche(`❌ ${resultAdmin.message}`);
+                    return;
+                }
+            }
+
+            // Sinon, tentative de connexion normale via le contexte d'authentification
             const result = await login(emailSaisi, motDePasseSaisi);
             
             if (result.success) {
