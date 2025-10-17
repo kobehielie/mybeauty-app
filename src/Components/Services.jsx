@@ -46,27 +46,27 @@ function Services() {
                 canonical="https://mybeauty.ci/services"
             />
             {/* En-tête avec titre et menu utilisateur */}
-            <header className="bg-gradient-to-r from-pink-500 to-purple-600 text-white p-6 shadow-lg" role="banner">
+            <header className="bg-gradient-to-r from-pink-500 to-purple-600 text-white p-4 md:p-6 shadow-lg" role="banner">
                 <div className="max-w-7xl mx-auto flex justify-between items-center">
                     <div>
-                        <h1 className="text-3xl font-bold cursor-pointer" onClick={() => navigate('/')}>💅 MyBeauty</h1>
-                        <p className="text-sm mt-1">Services populaires</p>
+                        <h1 className="text-xl md:text-3xl font-bold cursor-pointer" onClick={() => navigate('/')}>💅 MyBeauty</h1>
+                        <p className="text-xs md:text-sm mt-1 hidden sm:block">Services populaires</p>
                     </div>
 
                     {/* Si utilisateur non connecté, afficher les boutons Connexion/Inscription */}
                     {!utilisateurConnecte ? (
-                        <div className="flex gap-3">
+                        <div className="flex gap-2 md:gap-3">
                             <button
                                 onClick={() => navigate('/connexion')}
-                                className="bg-white text-pink-600 font-semibold px-6 py-3 rounded-lg hover:bg-pink-100 transition shadow-lg"
+                                className="bg-white text-pink-600 font-semibold px-3 md:px-6 py-2 md:py-3 text-sm md:text-base rounded-lg hover:bg-pink-100 transition shadow-lg"
                             >
-                                🔓 Connexion
+                                🔓 <span className="hidden sm:inline">Connexion</span>
                             </button>
                             <button
                                 onClick={() => navigate('/inscription')}
-                                className="bg-purple-700 text-white font-semibold px-6 py-3 rounded-lg hover:bg-purple-800 transition shadow-lg"
+                                className="bg-purple-700 text-white font-semibold px-3 md:px-6 py-2 md:py-3 text-sm md:text-base rounded-lg hover:bg-purple-800 transition shadow-lg"
                             >
-                                ✨ Inscription
+                                ✨ <span className="hidden sm:inline">Inscription</span>
                             </button>
                         </div>
                     ) : (
@@ -133,20 +133,20 @@ function Services() {
             </header>
 
             {/* Section principale avec les services */}
-            <main className="flex-1 p-8" role="main">
+            <main className="flex-1 p-4 md:p-8" role="main">
                 <div className="max-w-7xl mx-auto">
                     {/* Titre de la section */}
-                    <section className="text-center mb-12">
-                        <h2 className="text-4xl font-bold text-gray-800 mb-4">
+                    <section className="text-center mb-8 md:mb-12">
+                        <h2 className="text-2xl md:text-4xl font-bold text-gray-800 mb-3 md:mb-4">
                             🌟 Services Populaires
                         </h2>
-                        <p className="text-xl text-gray-600">
+                        <p className="text-base md:text-xl text-gray-600 px-4">
                             Découvrez tous nos services beauté et bien-être
                         </p>
                     </section>
 
                     {/* Grille des services */}
-                    <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" aria-label="Liste des services disponibles">
+                    <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8" aria-label="Liste des services disponibles">
                         {data.services.map((service) => (
                             <div key={service.id} className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-2xl transition-all transform hover:-translate-y-1">
                                 {/* Image du service */}

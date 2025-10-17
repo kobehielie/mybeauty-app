@@ -127,13 +127,13 @@ function Inscription() {
     return ( // Retourner l'interface utilisateur (ce qu'on voit à l'écran)
         <div className="min-h-screen bg-gradient-to-br from-pink-50 to-purple-50 flex items-center justify-center p-4"> {/* Conteneur principal - fond dégradé rose-violet, centré */}
             {/* Conteneur principal du formulaire */}
-            <div className="bg-white rounded-2xl shadow-2xl p-8 max-w-2xl w-full"> {/* Boîte blanche arrondie avec ombre */}
+            <div className="bg-white rounded-2xl shadow-2xl p-6 md:p-8 max-w-2xl w-full"> {/* Boîte blanche arrondie avec ombre */}
                 {/* En-tête avec titre */}
-                <div className="text-center mb-6"> {/* Titre centré avec espace en bas */}
-                    <h2 className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-purple-600"> {/* Titre gros, gras, avec dégradé de couleur */}
+                <div className="text-center mb-4 md:mb-6"> {/* Titre centré avec espace en bas */}
+                    <h2 className="text-2xl md:text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-purple-600"> {/* Titre gros, gras, avec dégradé de couleur */}
                         💅 Inscription MyBeauty
                     </h2>
-                    <p className="text-gray-600 mt-2">Rejoignez notre communauté beauté</p> {/* Sous-titre gris */}
+                    <p className="text-sm md:text-base text-gray-600 mt-2">Rejoignez notre communauté beauté</p> {/* Sous-titre gris */}
                 </div>
 
                 {/* Afficher le message de succès ou d'erreur (panneau d'affichage) */}
@@ -179,7 +179,7 @@ function Inscription() {
                     </div>
 
                     {/* Informations personnelles (communes à tous) - champs que tout le monde doit remplir */}
-                    <div className="grid grid-cols-2 gap-4"> {/* Grille de 2 colonnes avec espace de 4 */}
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4"> {/* Grille de 2 colonnes avec espace de 4 */}
                         <div> {/* Champ "Nom" */}
                             <label className="block text-sm font-medium mb-1">Nom *</label> {/* Étiquette "Nom" (obligatoire) */}
                             <input // Champ de saisie
@@ -229,7 +229,7 @@ function Inscription() {
                         />
                     </div>
 
-                    <div className="grid grid-cols-2 gap-4"> {/* Grille de 2 colonnes pour les mots de passe */}
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4"> {/* Grille de 2 colonnes pour les mots de passe */}
                         <div> {/* Champ "Mot de passe" */}
                             <label className="block text-sm font-medium mb-1">Mot de passe *</label> {/* Étiquette "Mot de passe" (obligatoire) */}
                             <input // Champ de saisie

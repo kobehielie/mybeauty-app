@@ -92,17 +92,17 @@ const Connexion = () => {
 
     return (
         <div className="min-h-screen bg-gradient-to-br from-pink-50 to-purple-50 flex items-center justify-center p-4">
-            <div className="bg-white rounded-2xl shadow-2xl p-8 max-w-md w-full">
-                <div className="text-center mb-8">
-                    <div className="inline-block bg-gradient-to-r from-pink-500 to-purple-600 p-4 rounded-full mb-4">
-                        <svg className="w-12 h-12 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div className="bg-white rounded-2xl shadow-2xl p-6 md:p-8 max-w-md w-full">
+                <div className="text-center mb-6 md:mb-8">
+                    <div className="inline-block bg-gradient-to-r from-pink-500 to-purple-600 p-3 md:p-4 rounded-full mb-3 md:mb-4">
+                        <svg className="w-10 h-10 md:w-12 md:h-12 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                         </svg>
                     </div>
-                    <h2 className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-purple-600">
+                    <h2 className="text-2xl md:text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-purple-600">
                         Connexion
                     </h2>
-                    <p className="text-gray-600 mt-2">Accédez à votre compte MyBeauty</p>
+                    <p className="text-sm md:text-base text-gray-600 mt-2">Accédez à votre compte MyBeauty</p>
                 </div>
 
                 {messageAffiche && (

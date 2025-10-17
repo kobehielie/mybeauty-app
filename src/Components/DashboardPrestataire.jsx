@@ -157,7 +157,7 @@ function DashboardPrestataire() {
     return (
         <div className="min-h-screen bg-gray-50">
             {/* En-tête avec informations du prestataire */}
-            <header className="bg-gradient-to-r from-pink-500 to-purple-600 text-white p-6 shadow-lg">
+            <header className="bg-gradient-to-r from-pink-500 to-purple-600 text-white p-4 md:p-6 shadow-lg">
                 <div className="max-w-7xl mx-auto flex justify-between items-center">
                     <div className="flex items-center gap-4">
                         <button
@@ -194,15 +194,15 @@ function DashboardPrestataire() {
                 </div>
             </header>
 
-            <div className="max-w-7xl mx-auto p-8">
+            <div className="max-w-7xl mx-auto p-4 md:p-8">
                 {/* Statistiques rapides */}
-                <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 mb-6 md:mb-8">
                     {/* Nombre de clients */}
                     <div 
                         onClick={() => navigate('/mes-clients')}
-                        className="bg-white p-6 rounded-xl shadow-md text-center cursor-pointer hover:shadow-xl transition transform hover:scale-105"
+                        className="bg-white p-4 md:p-6 rounded-xl shadow-md text-center cursor-pointer hover:shadow-xl transition transform hover:scale-105"
                     >
-                        <div className="text-3xl mb-2">👥</div>
+                        <div className="text-2xl md:text-3xl mb-2">👥</div>
                         <h3 className="font-bold text-2xl text-blue-600 mb-1">
                             {[...new Set(mesReservations.map(r => r.clientId))].length}
                         </h3>
