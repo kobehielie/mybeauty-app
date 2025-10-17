@@ -80,7 +80,7 @@ function LaisserAvis({ prestataireId, prestataireNom, onAvisEnvoye, onFermer }) 
                     onClick={() => setNote(i)}
                     onMouseEnter={() => setNoteHover(i)}
                     onMouseLeave={() => setNoteHover(0)}
-                    className="text-4xl transition-transform hover:scale-110 focus:outline-none"
+                    className="text-3xl md:text-4xl transition-transform hover:scale-110 focus:outline-none mx-0.5 md:mx-1"
                 >
                     {i <= (noteHover || note) ? '⭐' : '☆'}
                 </button>
@@ -117,7 +117,7 @@ function LaisserAvis({ prestataireId, prestataireNom, onAvisEnvoye, onFermer }) 
                         <label className="block text-sm font-semibold text-gray-700 mb-3">
                             Votre note <span className="text-red-500">*</span>
                         </label>
-                        <div className="flex gap-2 justify-center bg-gray-50 p-4 rounded-lg">
+                        <div className="flex justify-center items-center bg-gray-50 p-4 md:p-6 rounded-lg">
                             {afficherEtoiles()}
                         </div>
                         {note > 0 && (
