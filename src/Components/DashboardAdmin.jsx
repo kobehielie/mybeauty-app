@@ -176,15 +176,15 @@ function DashboardAdmin() {
         <div className="min-h-screen bg-gradient-to-br from-purple-50 to-pink-50">
             {/* Header */}
             <header className="bg-gradient-to-r from-purple-600 to-pink-500 text-white shadow-lg">
-                <div className="max-w-7xl mx-auto px-8 py-6">
+                <div className="max-w-7xl mx-auto px-4 md:px-8 py-4 md:py-6">
                     <div className="flex justify-between items-center">
                         <div>
-                            <h1 className="text-3xl font-bold">🛡️ Dashboard Admin</h1>
-                            <p className="text-purple-100 mt-1">Gestion de la plateforme MyBeauty</p>
+                            <h1 className="text-xl md:text-3xl font-bold">🛡️ Dashboard Admin</h1>
+                            <p className="text-purple-100 mt-1 text-xs md:text-base hidden sm:block">Gestion de la plateforme MyBeauty</p>
                         </div>
                         <button
                             onClick={deconnexion}
-                            className="bg-white text-purple-600 px-6 py-3 rounded-lg font-semibold hover:bg-purple-50 transition"
+                            className="bg-white text-purple-600 px-3 md:px-6 py-2 md:py-3 text-sm md:text-base rounded-lg font-semibold hover:bg-purple-50 transition"
                         >
                             Déconnexion
                         </button>
@@ -192,12 +192,12 @@ function DashboardAdmin() {
                 </div>
             </header>
 
-            <main className="max-w-7xl mx-auto px-8 py-8">
+            <main className="max-w-7xl mx-auto px-4 md:px-8 py-4 md:py-8">
                 {/* Onglets */}
-                <div className="flex gap-4 mb-8">
+                <div className="flex flex-wrap gap-2 md:gap-4 mb-6 md:mb-8">
                     <button
                         onClick={() => setOngletActif('statistiques')}
-                        className={`px-6 py-3 rounded-lg font-semibold transition ${
+                        className={`px-3 md:px-6 py-2 md:py-3 text-sm md:text-base rounded-lg font-semibold transition ${
                             ongletActif === 'statistiques'
                                 ? 'bg-purple-600 text-white'
                                 : 'bg-white text-gray-700 hover:bg-gray-50'
@@ -207,32 +207,34 @@ function DashboardAdmin() {
                     </button>
                     <button
                         onClick={() => setOngletActif('utilisateurs')}
-                        className={`px-6 py-3 rounded-lg font-semibold transition ${
+                        className={`px-3 md:px-6 py-2 md:py-3 text-sm md:text-base rounded-lg font-semibold transition ${
                             ongletActif === 'utilisateurs'
                                 ? 'bg-purple-600 text-white'
                                 : 'bg-white text-gray-700 hover:bg-gray-50'
                         }`}
                     >
-                        👥 Utilisateurs ({utilisateurs.length})
+                        <span className="hidden sm:inline">👥 Utilisateurs</span>
+                        <span className="sm:hidden">👥</span> ({utilisateurs.length})
                     </button>
                     <button
                         onClick={() => setOngletActif('activites')}
-                        className={`px-6 py-3 rounded-lg font-semibold transition ${
+                        className={`px-3 md:px-6 py-2 md:py-3 text-sm md:text-base rounded-lg font-semibold transition ${
                             ongletActif === 'activites'
                                 ? 'bg-purple-600 text-white'
                                 : 'bg-white text-gray-700 hover:bg-gray-50'
                         }`}
                     >
-                        📋 Activités Admin
+                        <span className="hidden sm:inline">📋 Activités</span>
+                        <span className="sm:hidden">📋</span>
                     </button>
                 </div>
 
                 {/* Contenu des onglets */}
                 {ongletActif === 'statistiques' && statistiques && (
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                        <div className="bg-white p-6 rounded-xl shadow-md border-l-4 border-blue-500">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
+                        <div className="bg-white p-4 md:p-6 rounded-xl shadow-md border-l-4 border-blue-500">
                             <div className="text-sm text-gray-600">Clients</div>
-                            <div className="text-3xl font-bold text-blue-600 mt-2">{statistiques.totalClients}</div>
+                            <div className="text-2xl md:text-3xl font-bold text-blue-600 mt-2">{statistiques.totalClients}</div>
                             <div className="text-xs text-gray-500 mt-1">{statistiques.clientsActifs} actifs</div>
                         </div>
                         <div className="bg-white p-6 rounded-xl shadow-md border-l-4 border-purple-500">

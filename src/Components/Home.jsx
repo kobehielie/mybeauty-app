@@ -105,25 +105,25 @@ function Home() {
                 keywords="beauté, coiffure, esthétique, réservation, Côte d'Ivoire, Abidjan, Mobile Money, prestataires beauté, coiffeur, maquillage, soins, épilation, Koumassi, Cocody, Marcory, Plateau"
                 canonical="https://mybeauty.ci/"
             />
-            <header className="bg-gradient-to-r from-pink-500 to-purple-600 text-white p-6 shadow-lg" role="banner">
+            <header className="bg-gradient-to-r from-pink-500 to-purple-600 text-white p-4 md:p-6 shadow-lg" role="banner">
                 <div className="max-w-7xl mx-auto flex justify-between items-center">
                     <div>
-                        <h1 className="text-3xl font-bold">MyBeauty</h1>
-                        <p className="text-sm mt-1">Votre plateforme de réservation beauté</p>
+                        <h1 className="text-xl md:text-3xl font-bold">MyBeauty</h1>
+                        <p className="text-xs md:text-sm mt-1 hidden sm:block">Votre plateforme de réservation beauté</p>
                     </div>
                     
                     {/* Si utilisateur non connecté, afficher les boutons Connexion/Inscription */}
                     {!utilisateurConnecte ? (
-                        <div className="flex gap-3">
+                        <div className="flex gap-2 md:gap-3">
                             <button 
                                 onClick={allerAConnexion} 
-                                className="bg-white text-pink-600 font-semibold px-6 py-3 rounded-lg hover:bg-pink-100 transition shadow-lg"
+                                className="bg-white text-pink-600 font-semibold px-3 py-2 md:px-6 md:py-3 text-sm md:text-base rounded-lg hover:bg-pink-100 transition shadow-lg"
                             >
                                 Connexion
                             </button>
                             <button 
                                 onClick={allerAInscription} 
-                                className="bg-purple-700 text-white font-semibold px-6 py-3 rounded-lg hover:bg-purple-800 transition shadow-lg"
+                                className="bg-purple-700 text-white font-semibold px-3 py-2 md:px-6 md:py-3 text-sm md:text-base rounded-lg hover:bg-purple-800 transition shadow-lg"
                             >
                                 Inscription
                             </button>
@@ -220,28 +220,28 @@ function Home() {
                 </div>
             </header>
             
-            <main className="flex-1 p-8" role="main">
+            <main className="flex-1 p-4 md:p-8" role="main">
                 <div className="max-w-7xl mx-auto">
-                    <section className="text-center mb-12">
-                        <h2 className="text-4xl font-bold text-gray-800 mb-4">
+                    <section className="text-center mb-8 md:mb-12">
+                        <h2 className="text-2xl md:text-4xl font-bold text-gray-800 mb-3 md:mb-4">
                             Bienvenue sur MyBeauty
                         </h2>
-                        <p className="text-xl text-gray-600 mb-8">
+                        <p className="text-base md:text-xl text-gray-600 mb-6 md:mb-8 px-4">
                             Trouvez les meilleurs professionnels de la beauté près de chez vous
                         </p>
                         
                         {/* Barre de recherche */}
-                        <div className="max-w-2xl mx-auto mb-8">
+                        <div className="max-w-2xl mx-auto mb-6 md:mb-8 px-4">
                             <div className="relative">
                                 <input
                                     type="text"
-                                    placeholder="Rechercher un service ou un prestataire..."
+                                    placeholder="Rechercher..."
                                     value={termeRecherche}
                                     onChange={(e) => {
                                         setTermeRecherche(e.target.value);
                                         effectuerRecherche(e.target.value);
                                     }}
-                                    className="w-full px-6 py-4 text-lg border-2 border-gray-300 rounded-full focus:ring-2 focus:ring-pink-500 focus:border-transparent shadow-lg"
+                                    className="w-full px-4 md:px-6 py-3 md:py-4 text-base md:text-lg border-2 border-gray-300 rounded-full focus:ring-2 focus:ring-pink-500 focus:border-transparent shadow-lg"
                                 />
                                 <button className="absolute right-2 top-2 bg-pink-500 text-white p-2 rounded-full hover:bg-pink-600 transition">
                                     <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -289,7 +289,7 @@ function Home() {
                     </section>
 
                     {/* Statistiques */}
-                    <div className="grid grid-cols-3 gap-6 mb-12">
+                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 md:gap-6 mb-8 md:mb-12 px-4">
                         <h3 className="sr-only">Statistiques de la plateforme</h3>
                         <div 
                             onClick={() => {
@@ -301,31 +301,31 @@ function Home() {
                                     navigate('/inscription');
                                 }
                             }}
-                            className="bg-white p-6 rounded-xl shadow-md border-l-4 border-blue-500 hover:shadow-lg transition cursor-pointer transform hover:scale-105"
+                            className="bg-white p-4 md:p-6 rounded-xl shadow-md border-l-4 border-blue-500 hover:shadow-lg transition cursor-pointer transform hover:scale-105"
                         >
-                            <div className="text-4xl font-bold text-blue-600">{data.clients.length}</div>
-                            <div className="text-gray-600 mt-1">Clients satisfaits</div>
+                            <div className="text-2xl md:text-4xl font-bold text-blue-600">{data.clients.length}</div>
+                            <div className="text-sm md:text-base text-gray-600 mt-1">Clients satisfaits</div>
                         </div>
                         <div 
                             onClick={() => navigate('/services')}
-                            className="bg-white p-6 rounded-xl shadow-md border-l-4 border-purple-500 hover:shadow-lg transition cursor-pointer transform hover:scale-105"
+                            className="bg-white p-4 md:p-6 rounded-xl shadow-md border-l-4 border-purple-500 hover:shadow-lg transition cursor-pointer transform hover:scale-105"
                         >
-                            <div className="text-4xl font-bold text-purple-600">{data.prestataires.length}</div>
-                            <div className="text-gray-600 mt-1">Prestataires qualifiés</div>
+                            <div className="text-2xl md:text-4xl font-bold text-purple-600">{data.prestataires.length}</div>
+                            <div className="text-sm md:text-base text-gray-600 mt-1">Prestataires qualifiés</div>
                         </div>
                         <div 
                             onClick={() => navigate('/services')}
-                            className="bg-white p-6 rounded-xl shadow-md border-l-4 border-green-500 hover:shadow-lg transition cursor-pointer transform hover:scale-105"
+                            className="bg-white p-4 md:p-6 rounded-xl shadow-md border-l-4 border-green-500 hover:shadow-lg transition cursor-pointer transform hover:scale-105"
                         >
-                            <div className="text-4xl font-bold text-green-600">{data.services.length}</div>
-                            <div className="text-gray-600 mt-1">Services proposés</div>
+                            <div className="text-2xl md:text-4xl font-bold text-green-600">{data.services.length}</div>
+                            <div className="text-sm md:text-base text-gray-600 mt-1">Services proposés</div>
                         </div>
                     </div>
 
                     {/* Prestataires */}
-                    <section className="mb-12">
-                        <h2 className="text-3xl font-bold mb-6 text-gray-800">Nos Prestataires</h2>
-                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <section className="mb-8 md:mb-12 px-4">
+                        <h2 className="text-2xl md:text-3xl font-bold mb-4 md:mb-6 text-gray-800">Nos Prestataires</h2>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
                             {data.prestataires.map(p => {
                                 // Charger les avis du mockData
                                 const avisMockData = data.avis.filter(a => a.prestataireId === p.id);
@@ -382,13 +382,13 @@ function Home() {
             </main>
 
             {/* Section Support & Contact */}
-            <section className="bg-gray-50 py-12">
-                <div className="max-w-7xl mx-auto px-8">
-                    <h2 className="text-3xl font-bold mb-8 text-gray-800 text-center">
+            <section className="bg-gray-50 py-8 md:py-12">
+                <div className="max-w-7xl mx-auto px-4 md:px-8">
+                    <h2 className="text-2xl md:text-3xl font-bold mb-6 md:mb-8 text-gray-800 text-center">
                         📞 Support & Contact
                     </h2>
                     
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
                         {/* Support Client */}
                         <div className="bg-white rounded-xl shadow-md p-6 text-center hover:shadow-lg transition">
                             <div className="text-4xl mb-4">📞</div>
