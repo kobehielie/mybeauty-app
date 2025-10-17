@@ -45,22 +45,51 @@ export const AuthProvider = ({ children }) => {
         try {
             setLoading(true);
             
+            // Chercher d'abord dans localStorage (utilisateurs ajoutés par admin)
+            const clientsLocalStorage = JSON.parse(localStorage.getItem('clients') || '[]');
+            const prestatairesLocalStorage = JSON.parse(localStorage.getItem('prestataires') || '[]');
+            
             // Utiliser les données importées directement (pas de fetch)
             const data = mockData;
             
-            // Chercher dans tous les utilisateurs (utilisateurs + clients + prestataires)
-            const allUsers = [...data.utilisateurs, ...data.clients, ...data.prestataires];
+            // Combiner toutes les sources d'utilisateurs
+            const allUsers = [
+                ...data.utilisateurs, 
+                ...data.clients, 
+                ...data.prestataires,
+                ...clientsLocalStorage,
+                ...prestatairesLocalStorage
+            ];
+            
             const foundUser = allUsers.find(u => u.email === email && u.motDePasse === password);
             
             if (!foundUser) {
                 throw new Error('Email ou mot de passe incorrect');
             }
 
-            // Sauvegarder dans le localStorage
+            // Mettre à jour la dernière connexion
             const userToSave = {
                 ...foundUser,
-                estConnecte: true
+                estConnecte: true,
+                derniereConnexion: new Date().toISOString()
             };
+            
+            // Mettre à jour dans localStorage si l'utilisateur vient de là
+            if (foundUser.role === 'client') {
+                const clients = JSON.parse(localStorage.getItem('clients') || '[]');
+                const index = clients.findIndex(c => c.id === foundUser.id);
+                if (index !== -1) {
+                    clients[index].derniereConnexion = userToSave.derniereConnexion;
+                    localStorage.setItem('clients', JSON.stringify(clients));
+                }
+            } else if (foundUser.role === 'prestataire') {
+                const prestataires = JSON.parse(localStorage.getItem('prestataires') || '[]');
+                const index = prestataires.findIndex(p => p.id === foundUser.id);
+                if (index !== -1) {
+                    prestataires[index].derniereConnexion = userToSave.derniereConnexion;
+                    localStorage.setItem('prestataires', JSON.stringify(prestataires));
+                }
+            }
             
             localStorage.setItem('utilisateurConnecte', JSON.stringify(userToSave));
             setUser(userToSave);
