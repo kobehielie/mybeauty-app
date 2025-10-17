@@ -145,6 +145,12 @@ function DashboardPrestataire() {
         alert(`✅ Réservation ${action === 'accepter' ? 'acceptée' : 'refusée'} !`);
     }
 
+    // Fonction pour promouvoir les services
+    function promouvoirServices() {
+        // Rediriger vers la page d'accueil où les services sont affichés
+        navigate('/');
+    }
+
     // Si les données ne sont pas encore chargées, afficher un loader
     if (!prestataire) {
         return (
@@ -487,7 +493,10 @@ function DashboardPrestataire() {
                             <div className="text-6xl mb-4">📅</div>
                             <h3 className="text-xl font-semibold text-gray-800 mb-2">Aucune réservation</h3>
                             <p className="text-gray-600 mb-6">Vous n'avez pas encore de rendez-vous programmés</p>
-                            <button className="bg-gradient-to-r from-pink-500 to-purple-600 text-white px-6 py-3 rounded-lg font-semibold hover:from-pink-600 hover:to-purple-700 transition">
+                            <button 
+                                onClick={promouvoirServices}
+                                className="bg-gradient-to-r from-pink-500 to-purple-600 text-white px-6 py-3 rounded-lg font-semibold hover:from-pink-600 hover:to-purple-700 transition"
+                            >
                                 📢 Promouvoir mes services
                             </button>
                         </div>
