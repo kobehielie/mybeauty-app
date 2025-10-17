@@ -331,7 +331,7 @@ function PrestataireDetails() {
                                                             state: donneesReservation
                                                         });
                                                     }}
-                                                    className="flex-1 bg-gradient-to-r from-pink-500 to-purple-600 text-white py-3 rounded-lg font-semibold hover:from-pink-600 hover:to-purple-700 transition shadow-lg"
+                                                    className="flex-1 bg-gradient-to-r from-pink-500 to-purple-600 text-white py-3 rounded-lg font-semibold hover:from-pink-600 hover:to-purple-700 transition shadow-lg flex items-center justify-center gap-2"
                                                 >
                                                     🗺️ Voir et réserver
                                                 </button>
