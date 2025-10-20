@@ -181,7 +181,7 @@ function Paiement() {
         { id: 'mtn_money', nom: 'MTN Mobile Money', icon: '/images/MTN.png', color: 'yellow', isImage: true },
         { id: 'orange_money', nom: 'Orange Money', icon: '/images/orange.jpg', color: 'orange', isImage: true },
         { id: 'wave', nom: 'Wave', icon: '/images/wave.png', color: 'blue', isImage: true },
-        { id: 'moov_money', nom: 'Moov Money', icon: '📞', color: 'purple', isImage: false },
+        { id: 'moov_money', nom: 'Moov Money', icon: '/images/moov.png', color: 'purple', isImage: true },
         { id: 'carte', nom: 'Carte Bancaire', icon: '💳', color: 'gray', isImage: false }
     ];
 

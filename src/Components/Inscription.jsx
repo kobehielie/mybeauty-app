@@ -328,7 +328,7 @@ function Inscription() {
                                             : 'border-gray-200 bg-white hover:border-pink-300'
                                     }`}
                                 >
-                                    <span className="text-2xl">📞</span>
+                                    <img src="/images/moov.png" alt="Moov Money" className="w-8 h-8 object-contain" />
                                     <span className="text-sm font-medium">Moov</span>
                                 </button>
                             </div>
