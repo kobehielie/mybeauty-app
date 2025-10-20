@@ -6,7 +6,13 @@ import dataLoader from '../data/dataLoader';
  * Utilise le chargement asynchrone pour ne pas bloquer l'interface
  */
 export const useDataLoader = (dataKeys = []) => {
-  const [data, setData] = useState({});
+  // Initialiser avec des tableaux vides pour éviter les erreurs
+  const initialData = {};
+  dataKeys.forEach(key => {
+    initialData[key] = [];
+  });
+  
+  const [data, setData] = useState(initialData);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -26,7 +32,7 @@ export const useDataLoader = (dataKeys = []) => {
         } else {
           // Charger uniquement les données demandées
           dataKeys.forEach(key => {
-            loadedData[key] = dataLoader.load(key);
+            loadedData[key] = dataLoader.load(key) || [];
           });
         }
         

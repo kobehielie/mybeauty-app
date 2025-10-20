@@ -11,7 +11,7 @@ import UserAvatar from './UserAvatar.jsx';
 // Composant pour la page d'accueil
 function Home() {
     // Charger uniquement les données nécessaires pour la page d'accueil
-    const { data, loading } = useDataLoader(['services', 'prestataires']);
+    const { data, loading } = useDataLoader(['services', 'prestataires', 'avis', 'clients']);
     
     // Pour naviguer vers d'autres pages
     const navigate = useNavigate();
@@ -322,21 +322,21 @@ function Home() {
                             }}
                             className="bg-white p-4 md:p-6 rounded-xl shadow-md border-l-4 border-blue-500 hover:shadow-lg transition cursor-pointer transform hover:scale-105"
                         >
-                            <div className="text-2xl md:text-4xl font-bold text-blue-600">{data.clients.length}</div>
+                            <div className="text-2xl md:text-4xl font-bold text-blue-600">{(data.clients || []).length}</div>
                             <div className="text-sm md:text-base text-gray-600 mt-1">Clients satisfaits</div>
                         </div>
                         <div 
                             onClick={() => navigate('/services')}
                             className="bg-white p-4 md:p-6 rounded-xl shadow-md border-l-4 border-purple-500 hover:shadow-lg transition cursor-pointer transform hover:scale-105"
                         >
-                            <div className="text-2xl md:text-4xl font-bold text-purple-600">{data.prestataires.length}</div>
+                            <div className="text-2xl md:text-4xl font-bold text-purple-600">{(data.prestataires || []).length}</div>
                             <div className="text-sm md:text-base text-gray-600 mt-1">Prestataires qualifiés</div>
                         </div>
                         <div 
                             onClick={() => navigate('/services')}
                             className="bg-white p-4 md:p-6 rounded-xl shadow-md border-l-4 border-green-500 hover:shadow-lg transition cursor-pointer transform hover:scale-105"
                         >
-                            <div className="text-2xl md:text-4xl font-bold text-green-600">{data.services.length}</div>
+                            <div className="text-2xl md:text-4xl font-bold text-green-600">{(data.services || []).length}</div>
                             <div className="text-sm md:text-base text-gray-600 mt-1">Services proposés</div>
                         </div>
                     </div>
@@ -345,9 +345,9 @@ function Home() {
                     <section className="mb-8 md:mb-12 px-4">
                         <h2 className="text-2xl md:text-3xl font-bold mb-4 md:mb-6 text-gray-800">Nos Prestataires</h2>
                         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
-                            {data.prestataires.map(p => {
-                                // Charger les avis du mockData
-                                const avisMockData = data.avis.filter(a => a.prestataireId === p.id);
+                            {(data.prestataires || []).map(p => {
+                                // Calculer la note moyenne du prestataire
+                                const avisMockData = (data.avis || []).filter(a => a.prestataireId === p.id);
                                 
                                 // Charger les avis du localStorage
                                 const avisLocaux = JSON.parse(localStorage.getItem('avis') || '[]');

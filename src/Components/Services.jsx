@@ -164,7 +164,7 @@ function Services() {
 
                     {/* Grille des services */}
                     <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8" aria-label="Liste des services disponibles">
-                        {data.services.map((service) => (
+                        {(data.services || []).map((service) => (
                             <div key={service.id} className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-2xl transition-all transform hover:-translate-y-1">
                                 {/* Image du service */}
                                 <img
