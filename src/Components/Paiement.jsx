@@ -178,11 +178,11 @@ function Paiement() {
 
     // Liste des modes de paiement disponibles
     const listeDesPaiements = [
-        { id: 'mtn_money', nom: 'MTN Mobile Money', icon: '📱', color: 'yellow' },
-        { id: 'orange_money', nom: 'Orange Money', icon: '🍊', color: 'orange' },
-        { id: 'wave', nom: 'Wave', icon: '🌊', color: 'blue' },
-        { id: 'moov_money', nom: 'Moov Money', icon: '📞', color: 'purple' },
-        { id: 'carte', nom: 'Carte Bancaire', icon: '💳', color: 'gray' }
+        { id: 'mtn_money', nom: 'MTN Mobile Money', icon: '/images/MTN.png', color: 'yellow', isImage: true },
+        { id: 'orange_money', nom: 'Orange Money', icon: '/images/orange.jpg', color: 'orange', isImage: true },
+        { id: 'wave', nom: 'Wave', icon: '/images/wave.png', color: 'blue', isImage: true },
+        { id: 'moov_money', nom: 'Moov Money', icon: '📞', color: 'purple', isImage: false },
+        { id: 'carte', nom: 'Carte Bancaire', icon: '💳', color: 'gray', isImage: false }
     ];
 
     // Si les données ne sont pas encore chargées, afficher un loader
@@ -338,7 +338,11 @@ function Paiement() {
                                         }`}
                                     >
                                         <div className="flex items-center gap-3">
-                                            <span className="text-3xl">{mode.icon}</span>
+                                            {mode.isImage ? (
+                                                <img src={mode.icon} alt={mode.nom} className="w-10 h-10 object-contain rounded" />
+                                            ) : (
+                                                <span className="text-3xl">{mode.icon}</span>
+                                            )}
                                             <span className="font-semibold text-gray-800">{mode.nom}</span>
                                             {modePaiementChoisi === mode.id && (
                                                 <span className="ml-auto text-pink-600">✓</span>

@@ -269,18 +269,69 @@ function Inscription() {
                     {/* Champs spécifiques aux Clients (seulement si "Client" est choisi) */}
                     {roleChoisi === 'client' && ( // Si le rôle choisi est "client", alors afficher cette section
                         <div className="bg-blue-50 p-4 rounded-lg"> {/* Boîte bleue claire */}
-                            <label className="block text-sm font-medium mb-2">Mode de paiement préféré</label> {/* Étiquette "Mode de paiement" */}
-                            <select // Liste déroulante
-                                value={preferencePaiementClient} // Valeur actuelle (ce qui est sélectionné)
-                                onChange={(e) => setPreferencePaiementClient(e.target.value)} // Quand on change, changer la valeur
-                                className="w-full px-4 py-3 border-2 rounded-lg focus:ring-2 focus:ring-pink-500" // Style de la liste
-                            >
-                                <option value="carte">💳 Carte bancaire</option> {/* Option "Carte bancaire" */}
-                                <option value="mtn_money">📱 MTN Money</option> {/* Option "MTN Money" */}
-                                <option value="orange_money">🍊 Orange Money</option> {/* Option "Orange Money" */}
-                                <option value="wave">🌊 Wave</option> {/* Option "Wave" */}
-                                <option value="moov_money">📞 Moov Money</option> {/* Option "Moov Money" */}
-                            </select>
+                            <label className="block text-sm font-medium mb-3">Mode de paiement préféré</label> {/* Étiquette "Mode de paiement" */}
+                            <div className="grid grid-cols-2 gap-3">
+                                <button
+                                    type="button"
+                                    onClick={() => setPreferencePaiementClient('carte')}
+                                    className={`p-3 rounded-lg border-2 transition flex items-center gap-2 ${
+                                        preferencePaiementClient === 'carte' 
+                                            ? 'border-pink-500 bg-white shadow-md' 
+                                            : 'border-gray-200 bg-white hover:border-pink-300'
+                                    }`}
+                                >
+                                    <span className="text-2xl">💳</span>
+                                    <span className="text-sm font-medium">Carte</span>
+                                </button>
+                                <button
+                                    type="button"
+                                    onClick={() => setPreferencePaiementClient('mtn_money')}
+                                    className={`p-3 rounded-lg border-2 transition flex items-center gap-2 ${
+                                        preferencePaiementClient === 'mtn_money' 
+                                            ? 'border-pink-500 bg-white shadow-md' 
+                                            : 'border-gray-200 bg-white hover:border-pink-300'
+                                    }`}
+                                >
+                                    <img src="/images/MTN.png" alt="MTN Money" className="w-8 h-8 object-contain" />
+                                    <span className="text-sm font-medium">MTN</span>
+                                </button>
+                                <button
+                                    type="button"
+                                    onClick={() => setPreferencePaiementClient('orange_money')}
+                                    className={`p-3 rounded-lg border-2 transition flex items-center gap-2 ${
+                                        preferencePaiementClient === 'orange_money' 
+                                            ? 'border-pink-500 bg-white shadow-md' 
+                                            : 'border-gray-200 bg-white hover:border-pink-300'
+                                    }`}
+                                >
+                                    <img src="/images/orange.jpg" alt="Orange Money" className="w-8 h-8 object-contain rounded" />
+                                    <span className="text-sm font-medium">Orange</span>
+                                </button>
+                                <button
+                                    type="button"
+                                    onClick={() => setPreferencePaiementClient('wave')}
+                                    className={`p-3 rounded-lg border-2 transition flex items-center gap-2 ${
+                                        preferencePaiementClient === 'wave' 
+                                            ? 'border-pink-500 bg-white shadow-md' 
+                                            : 'border-gray-200 bg-white hover:border-pink-300'
+                                    }`}
+                                >
+                                    <img src="/images/wave.png" alt="Wave" className="w-8 h-8 object-contain" />
+                                    <span className="text-sm font-medium">Wave</span>
+                                </button>
+                                <button
+                                    type="button"
+                                    onClick={() => setPreferencePaiementClient('moov_money')}
+                                    className={`p-3 rounded-lg border-2 transition flex items-center gap-2 ${
+                                        preferencePaiementClient === 'moov_money' 
+                                            ? 'border-pink-500 bg-white shadow-md' 
+                                            : 'border-gray-200 bg-white hover:border-pink-300'
+                                    }`}
+                                >
+                                    <span className="text-2xl">📞</span>
+                                    <span className="text-sm font-medium">Moov</span>
+                                </button>
+                            </div>
                         </div>
                     )}
 
