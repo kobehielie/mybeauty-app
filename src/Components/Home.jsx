@@ -446,7 +446,7 @@ function Home() {
                                 Envoyez-nous vos questions par email
                             </p>
                             <p className="text-pink-600 font-semibold text-lg">
-                                support@mybeauty.ci
+                                edencanaanjes@gmail.com
                             </p>
                         </div>
                     </div>
