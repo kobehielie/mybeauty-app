@@ -1,17 +1,17 @@
 // Importer les outils React nécessaires
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-// Importer le fichier qui charge nos données
-import dataLoader from '../data/dataLoader.js';
+// Importer le hook optimisé pour charger les données
+import { useDataLoader } from '../hooks/useDataLoader';
 import SEOHead from './SEOHead.jsx';
 // Importer le composant UserAvatar pour afficher l'avatar de l'utilisateur
 import UserAvatar from './UserAvatar.jsx';
 
 // Composant pour la page d'accueil
 function Home() {
-    // Charger toutes les données depuis le fichier JSON
-    const data = dataLoader.loadAll();
+    // Charger uniquement les données nécessaires pour la page d'accueil
+    const { data, loading } = useDataLoader(['services', 'prestataires']);
     
     // Pour naviguer vers d'autres pages
     const navigate = useNavigate();
@@ -52,49 +52,68 @@ function Home() {
         setMenuOuvert(false);
     }
 
-    // Fonction pour rechercher des services ou prestataires
-    function effectuerRecherche(terme) {
-        if (!terme.trim()) {
-            setResultatsRecherche([]);
-            return;
-        }
-
-        const resultats = [];
-        const termeLower = terme.toLowerCase();
-
-        // Rechercher dans les services
-        data.services.forEach(service => {
-            if (service.nom.toLowerCase().includes(termeLower) || 
-                service.description.toLowerCase().includes(termeLower)) {
-                resultats.push({
-                    type: 'service',
-                    id: service.id,
-                    nom: service.nom,
-                    description: service.description,
-                    prix: service.prix,
-                    image: service.image
-                });
+    // Fonction pour rechercher des services ou prestataires (optimisée avec useMemo)
+    const effectuerRecherche = useMemo(() => {
+        return (terme) => {
+            if (!terme.trim() || !data.services || !data.prestataires) {
+                setResultatsRecherche([]);
+                return;
             }
-        });
 
-        // Rechercher dans les prestataires
-        data.prestataires.forEach(prestataire => {
-            if (prestataire.nom.toLowerCase().includes(termeLower) || 
-                prestataire.prenom.toLowerCase().includes(termeLower) ||
-                prestataire.specialite.toLowerCase().includes(termeLower) ||
-                prestataire.quartier.toLowerCase().includes(termeLower)) {
-                resultats.push({
-                    type: 'prestataire',
-                    id: prestataire.id,
-                    nom: `${prestataire.prenom} ${prestataire.nom}`,
-                    specialite: prestataire.specialite,
-                    quartier: prestataire.quartier,
-                    image: prestataire.image
-                });
-            }
-        });
+            const resultats = [];
+            const termeLower = terme.toLowerCase();
 
-        setResultatsRecherche(resultats.slice(0, 6)); // Limiter à 6 résultats
+            // Rechercher dans les services
+            data.services.forEach(service => {
+                if (service.nom.toLowerCase().includes(termeLower) || 
+                    service.description.toLowerCase().includes(termeLower)) {
+                    resultats.push({
+                        type: 'service',
+                        id: service.id,
+                        nom: service.nom,
+                        description: service.description,
+                        prix: service.prix,
+                        image: service.image
+                    });
+                }
+            });
+
+            // Rechercher dans les prestataires
+            data.prestataires.forEach(prestataire => {
+                if (prestataire.nom.toLowerCase().includes(termeLower) || 
+                    prestataire.prenom.toLowerCase().includes(termeLower) ||
+                    prestataire.specialite.toLowerCase().includes(termeLower) ||
+                    prestataire.quartier.toLowerCase().includes(termeLower)) {
+                    resultats.push({
+                        type: 'prestataire',
+                        id: prestataire.id,
+                        nom: `${prestataire.prenom} ${prestataire.nom}`,
+                        specialite: prestataire.specialite,
+                        quartier: prestataire.quartier,
+                        image: prestataire.image
+                    });
+                }
+            });
+
+            setResultatsRecherche(resultats.slice(0, 6)); // Limiter à 6 résultats
+        };
+    }, [data.services, data.prestataires]);
+
+    // Afficher un loader pendant le chargement initial
+    if (loading) {
+        return (
+            <div className="min-h-screen bg-gradient-to-br from-pink-50 to-purple-50 flex items-center justify-center">
+                <div className="text-center">
+                    <div className="relative">
+                        <div className="animate-spin rounded-full h-20 w-20 border-b-4 border-pink-600 mx-auto"></div>
+                        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+                            <span className="text-3xl">💅</span>
+                        </div>
+                    </div>
+                    <p className="text-gray-600 mt-4 font-medium">Chargement de MyBeauty...</p>
+                </div>
+            </div>
+        );
     }
 
     return (
@@ -352,6 +371,7 @@ function Home() {
                                             src={p.image || 'https://via.placeholder.com/400'} 
                                             alt={p.nom}
                                             className="w-full h-48 object-cover"
+                                            loading="lazy"
                                         />
                                         <div className="p-4">
                                             <h3 className="font-bold text-lg text-gray-800">{p.prenom} {p.nom}</h3>
@@ -404,7 +424,7 @@ function Home() {
                         {/* Chat en direct */}
                         <div className="bg-white rounded-xl shadow-md p-6 text-center hover:shadow-lg transition">
                             <div className="text-4xl mb-4">
-                                <img src="/images/chat-a-bulles.png" alt="Chat" className="w-12 h-12 mx-auto" />
+                                <img src="/images/chat-a-bulles.png" alt="Chat" className="w-12 h-12 mx-auto" loading="lazy" />
                             </div>
                             <h3 className="text-xl font-semibold mb-3 text-gray-800">Chat en direct</h3>
                             <p className="text-gray-600 mb-4">

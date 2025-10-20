@@ -1,7 +1,7 @@
 // Importer les outils React nécessaires
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import dataLoader from '../data/dataLoader';
+import { useDataLoader } from '../hooks/useDataLoader';
 import SEOHead from './SEOHead.jsx';
 // Importer le composant UserAvatar pour afficher l'avatar de l'utilisateur
 import UserAvatar from './UserAvatar.jsx';
@@ -17,8 +17,8 @@ function Services() {
     // Variable pour ouvrir/fermer le menu utilisateur
     const [menuOuvert, setMenuOuvert] = useState(false);
 
-    // Charger toutes les données depuis le fichier JSON
-    const data = dataLoader.loadAll();
+    // Charger uniquement les données nécessaires (services et prestataires)
+    const { data, loading } = useDataLoader(['services', 'prestataires']);
 
     // useEffect s'exécute quand la page se charge
     useEffect(() => {
@@ -35,6 +35,23 @@ function Services() {
         setUtilisateurConnecte(null);
         setMenuOuvert(false);
         navigate('/');
+    }
+
+    // Afficher un loader pendant le chargement
+    if (loading) {
+        return (
+            <div className="min-h-screen bg-gradient-to-br from-pink-50 to-purple-50 flex items-center justify-center">
+                <div className="text-center">
+                    <div className="relative">
+                        <div className="animate-spin rounded-full h-20 w-20 border-b-4 border-pink-600 mx-auto"></div>
+                        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+                            <span className="text-3xl">💅</span>
+                        </div>
+                    </div>
+                    <p className="text-gray-600 mt-4 font-medium">Chargement des services...</p>
+                </div>
+            </div>
+        );
     }
 
     return (
@@ -154,6 +171,7 @@ function Services() {
                                     src={service.image || 'https://via.placeholder.com/400'}
                                     alt={service.nom}
                                     className="w-full h-48 object-cover"
+                                    loading="lazy"
                                 />
                                 <div className="p-6">
                                     {/* Titre et description du service */}
