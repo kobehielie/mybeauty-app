@@ -1,28 +1,46 @@
 // Importer les outils pour la navigation entre les pages
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { lazy, Suspense } from 'react';
 
 // Importer les contextes nécessaires
 import { ChatProvider } from './contexts/ChatContext';           // Contexte pour le chat
 import { NotificationProvider } from './contexts/NotificationContext'; // Contexte pour les notifications
 import { AuthProvider } from './contexts/SimpleAuthContext';      // Contexte pour l'authentification
 
-// Importer toutes les pages de notre application
+// Importer uniquement les pages critiques (chargement immédiat)
 import Home from './Components/Home';                           // Page d'accueil
-import Inscription from './Components/Inscription';             // Page pour créer un compte
 import Connexion from './Components/Connexion';                 // Page pour se connecter
-import Profil from './Components/Profil';                       // Page du profil utilisateur
-import Services from './Components/Services';                   // Page liste des services
-import PrestataireDetails from './Components/PrestataireDetails'; // Page détails d'un prestataire
-import LocalisationPrestataire from './Components/LocalisationPrestataire'; // Page carte du prestataire
-import Paiement from './Components/Paiement';                   // Page de paiement
-import DashboardClient from './Components/DashboardClient';     // Tableau de bord client
-import DashboardPrestataire from './Components/DashboardPrestataire'; // Tableau de bord prestataire
-import MesClients from './Components/MesClients';               // Page liste des clients du prestataire
-import ProfilClient from './Components/ProfilClient';           // Page profil détaillé d'un client
-import MesServices from './Components/MesServices';             // Page gestion des services du prestataire
-import GestionPlanning from './Components/GestionPlanning.jsx';     // Page gestion planning
-import ChatInterface from './Components/ChatInterface';         // Page de chat dynamique
-import DashboardAdmin from './Components/DashboardAdmin';       // Dashboard administrateur
+import Inscription from './Components/Inscription';             // Page pour créer un compte
+
+// Lazy loading pour les autres pages (chargement à la demande)
+const Profil = lazy(() => import('./Components/Profil'));
+const Services = lazy(() => import('./Components/Services'));
+const PrestataireDetails = lazy(() => import('./Components/PrestataireDetails'));
+const LocalisationPrestataire = lazy(() => import('./Components/LocalisationPrestataire'));
+const Paiement = lazy(() => import('./Components/Paiement'));
+const DashboardClient = lazy(() => import('./Components/DashboardClient'));
+const DashboardPrestataire = lazy(() => import('./Components/DashboardPrestataire'));
+const MesClients = lazy(() => import('./Components/MesClients'));
+const ProfilClient = lazy(() => import('./Components/ProfilClient'));
+const MesServices = lazy(() => import('./Components/MesServices'));
+const GestionPlanning = lazy(() => import('./Components/GestionPlanning.jsx'));
+const ChatInterface = lazy(() => import('./Components/ChatInterface'));
+const DashboardAdmin = lazy(() => import('./Components/DashboardAdmin'));
+
+// Composant de chargement élégant
+const LoadingFallback = () => (
+  <div className="min-h-screen bg-gradient-to-br from-pink-50 to-purple-50 flex items-center justify-center">
+    <div className="text-center">
+      <div className="relative">
+        <div className="animate-spin rounded-full h-20 w-20 border-b-4 border-pink-600 mx-auto"></div>
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+          <span className="text-3xl">💅</span>
+        </div>
+      </div>
+      <p className="text-gray-600 mt-4 font-medium">Chargement...</p>
+    </div>
+  </div>
+);
 
 // Composant principal de l'application
 function App() {
@@ -33,6 +51,7 @@ function App() {
         <ChatProvider>
           {/* Router permet la navigation entre les pages */}
           <Router>
+          <Suspense fallback={<LoadingFallback />}>
           <Routes>
         {/* Route pour la page d'accueil */}
         <Route path="/" element={<Home />} />
@@ -74,6 +93,7 @@ function App() {
           Exemple : <Route path="/ma-nouvelle-page" element={<MaNouvellePageComponent />} />
         */}
           </Routes>
+          </Suspense>
         </Router>
         </ChatProvider>
       </NotificationProvider>

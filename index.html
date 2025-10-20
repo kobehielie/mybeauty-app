@@ -107,7 +107,23 @@
     <title>MyBeauty - Services de beauté en Côte d'Ivoire | Réservation en ligne</title>
   </head>
   <body>
-    <div id="root"></div>
+    <div id="root">
+      <!-- Loader initial pendant le chargement du JS -->
+      <div style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(135deg, #fdf2f8 0%, #faf5ff 100%); display: flex; align-items: center; justify-content: center; z-index: 9999;">
+        <div style="text-align: center;">
+          <div style="position: relative; width: 80px; height: 80px; margin: 0 auto;">
+            <div style="position: absolute; width: 80px; height: 80px; border: 4px solid #ec4899; border-top-color: transparent; border-radius: 50%; animation: spin 1s linear infinite;"></div>
+            <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 32px;">💅</div>
+          </div>
+          <p style="color: #6b7280; margin-top: 20px; font-family: system-ui, -apple-system, sans-serif; font-weight: 500;">MyBeauty</p>
+        </div>
+      </div>
+      <style>
+        @keyframes spin {
+          to { transform: rotate(360deg); }
+        }
+      </style>
+    </div>
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>
